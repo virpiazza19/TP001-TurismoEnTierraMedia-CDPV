@@ -32,8 +32,6 @@ public class Usuario extends TierraMedia { //PUSE QUE EXTIENDE SOLO PARA QUE NO 
 		return itinerario;
 	}
 
-
-
 	public void ordenarPorTipoAtraccion() {
 		Arrays.sort(atracciones, new ComparadorPorTipoAtraccion()); // HAY QUE CORREGIR ESTO
 	}
