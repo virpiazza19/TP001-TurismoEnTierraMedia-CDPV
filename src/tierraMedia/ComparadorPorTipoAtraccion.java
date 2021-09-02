@@ -2,11 +2,46 @@ package tierraMedia;
 
 import java.util.Comparator;
 
-public class ComparadorPorTipoAtraccion implements Comparator<Atraccion>{
-	
+public class ComparadorPorTipoAtraccion implements Comparator<Producto> { 
+	private TipoAtraccion tipoPreferido;
+
+	public ComparadorPorTipoAtraccion(TipoAtraccion atraccionPreferida) {
+		this.tipoPreferido = atraccionPreferida;
+	}
+
 	@Override
-	public int compare(Atraccion A1, Atraccion A2) {
-		return A1.getAtraccion().compareTo(A2.getAtraccion()); 
+	public int compare(Producto P1, Producto P2) {
+		if (P1.atraccionPreferida == this.tipoPreferido && P2.atraccionPreferida == this.tipoPreferido) {
+			if (P1.esPromo() && P2.esPromo()) {
+				if (Integer.compare(P1.costo, P2.costo) == 0) {
+					return -Double.compare(P1.duracion, P2.duracion);
+				} else {
+					return -Double.compare(P1.costo, P2.costo);
+				}
+			} else {
+				return -Boolean.compare(P1.esPromo(), P2.esPromo());
+			}
+		} else if (P1.atraccionPreferida != this.tipoPreferido && P2.atraccionPreferida != this.tipoPreferido) {
+			if (P1.esPromo() && P2.esPromo()) {
+				if (Integer.compare(P1.costo, P2.costo) == 0) {
+					return -Double.compare(P1.duracion, P2.duracion);
+				} else {
+					return -Double.compare(P1.costo, P2.costo);
+				}
+			} else if (!P1.esPromo() && !P2.esPromo()) {
+				if (Integer.compare(P1.costo, P2.costo) == 0) {
+					return -Double.compare(P1.duracion, P2.duracion);
+				} else {
+					return -Double.compare(P1.costo, P2.costo);
+				}
+			} else {
+				return -Boolean.compare(P1.esPromo(), P2.esPromo());
+			}
+		} else {
+			if (P1.atraccionPreferida == this.tipoPreferido)
+				return -1;
+			return 1;
+		}
 	}
 
 }
