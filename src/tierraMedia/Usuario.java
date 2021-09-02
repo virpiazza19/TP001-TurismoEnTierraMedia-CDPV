@@ -1,6 +1,8 @@
 package tierraMedia;
 
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL ORDENADOR
 	private String nombre;
@@ -37,7 +39,7 @@ public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL O
 	}
 
 	public void contratarPromocion() {
-		//FALTA		
+		
 		
 	}
 

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package tierraMedia;
 
 import java.io.BufferedReader;
@@ -94,4 +93,3 @@ public class Lector {
 		return usuario;
 	}
 }
->>>>>>> refs/heads/master
