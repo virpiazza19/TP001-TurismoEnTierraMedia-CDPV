@@ -1,6 +1,7 @@
 package tierraMedia;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class Atraccion extends Producto{
 	String nombre;
 	int costo;
@@ -9,6 +10,8 @@ public class Atraccion extends Producto{
 	TipoAtraccion atraccion;
 	
 =======
+=======
+>>>>>>> refs/heads/master
 public class Atraccion extends TierraMedia {
 	private String nombre;
 	private int costo;
@@ -25,6 +28,9 @@ public class Atraccion extends TierraMedia {
 		this.atraccion = atraccion;
 	}
 
+<<<<<<< HEAD
+>>>>>>> refs/heads/master
+=======
 >>>>>>> refs/heads/master
 	public String getNombre() {
 		return nombre;
@@ -38,6 +44,9 @@ public class Atraccion extends TierraMedia {
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
+>>>>>>> refs/heads/master
+=======
 >>>>>>> refs/heads/master
 	public int getCupo() {
 		return cupo;
@@ -46,6 +55,7 @@ public class Atraccion extends TierraMedia {
 		return atraccion;
 	}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 	public Atraccion(String nombre, int costo, double duracion, int cupo, TipoAtraccion atraccion) {
 		super();
@@ -69,8 +79,24 @@ public class Atraccion extends TierraMedia {
 		}
 		this.cupo--;
 >>>>>>> refs/heads/master
+=======
+	
+	// DUDA: modificador de acceso
+	public boolean hayCupo() {
+		return this.getCupo() > 0;
+	}
+
+	
+	// Exception es atrapada en la clase padre.
+	protected void disminuirCupo() throws NoHayCupoException {
+		if (!hayCupo()) {
+			throw new NoHayCupoException("Se agotó el CUPO en la atracción.");
+		}
+		this.cupo--;
+>>>>>>> refs/heads/master
 	}
 	
+<<<<<<< HEAD
 <<<<<<< HEAD
 	private int restarCapacidad() {
 		
@@ -91,6 +117,8 @@ public class Atraccion extends TierraMedia {
 		this.cupo--;
 	}
 	
+=======
+>>>>>>> refs/heads/master
 =======
 >>>>>>> refs/heads/master
 }
