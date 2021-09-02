@@ -1,19 +1,30 @@
 package tierraMedia;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Producto {
-	private List <Atraccion> atracciones = new LinkedList <Atraccion>();
+	List <Producto> ofertas = new ArrayList<Producto>();
 	
-	TipoAtraccion atraccion;
+	String tipoDeAtraccion;
+	int costo;
+	double duracion;
 
-	public int compareTo(Atraccion A1, Atraccion A2) {
-		return A1.getAtraccion().compareTo(A2.getAtraccion());	
+	public Producto(String tipoDeAtraccion, int costo, double duracion) {
+		this.tipoDeAtraccion = tipoDeAtraccion;
+		this.costo = costo;
+		this.duracion = duracion;
 	}
 	
-	public void agregarAtraccion(Atraccion A) {
-		atracciones.add(A);
+	@Override
+	public String toString() {
+		return this.getClass().getName() + " [tipoDeAtraccion=" + tipoDeAtraccion + ", costo=" + costo + ", duracion=" + duracion + "]";
 	}
+
+	protected boolean esPromo() {
+		return false;
+	}
+	
 	
 }

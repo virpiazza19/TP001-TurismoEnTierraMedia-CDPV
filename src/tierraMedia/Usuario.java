@@ -2,7 +2,7 @@ package tierraMedia;
 
 import java.util.Arrays;
 
-public class Usuario extends Producto { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL ORDENADOR
+public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL ORDENADOR
 	private String nombre;
 	private int presupuesto;
 	private double tiempoDisponible;
@@ -33,7 +33,7 @@ public class Usuario extends Producto { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME 
 	}
 
 	public void ordenarPorTipoAtraccion() {
-		Arrays.sort(atracciones, new ComparadorPorTipoAtraccion()); // HAY QUE CORREGIR ESTO
+		ofertas.sort(new ComparadorPorTipoAtraccion(atraccionPreferida)); // HAY QUE CORREGIR ESTO
 	}
 
 	public void contratarPromocion() {

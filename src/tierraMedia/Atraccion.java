@@ -1,8 +1,5 @@
 package tierraMedia;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Atraccion extends Producto{
 	String nombre;
 	int costo;
@@ -13,19 +10,15 @@ public class Atraccion extends Producto{
 	public String getNombre() {
 		return nombre;
 	}
-
 	public int getCosto() {
 		return costo;
 	}
-
 	public double getDuracion() {
 		return duracion;
 	}
-
 	public int getCupo() {
 		return cupo;
 	}
-
 	public TipoAtraccion getAtraccion() {
 		return atraccion;
 	}
