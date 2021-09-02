@@ -1,6 +1,6 @@
 package tierraMedia;
 
-public class Atraccion extends TierraMedia {
+public class Atraccion extends Producto {
 	private String nombre;
 	private int costo;
 	private double duracion;
