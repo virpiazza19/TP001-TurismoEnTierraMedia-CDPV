@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Producto {
+public class Producto { //Era TierraMedia
 	List <Producto> ofertas = new ArrayList<Producto>();
 	
 	TipoAtraccion atraccionPreferida;

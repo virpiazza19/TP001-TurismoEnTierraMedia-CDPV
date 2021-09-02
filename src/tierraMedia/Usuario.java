@@ -7,7 +7,7 @@ public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL O
 	private int presupuesto;
 	private double tiempoDisponible;
 	private TipoAtraccion atraccionPreferida;
-	private String []itinerario;
+	private String []itinerario; //NO SE SI ES UN ARRAY SIMPLE, PUEDE SER UNA LISTA TAMBIEN
 	
 	
 	public Usuario(String nombre, int presupuesto, double tiempoDisponible, TipoAtraccion atraccionPreferida) {

@@ -9,9 +9,8 @@ public abstract class Promocion extends Producto {
 	private List <Atraccion> atracciones = new LinkedList <Atraccion>();
 	private List <Promocion> promociones = new ArrayList <Promocion>();
 	TipoPromocion promo;
-	TipoAtraccion atraccion;
 	
-	public Promocion(String tipoDeAtraccion, int costo, int duracion) {
+	public Promocion(TipoAtraccion tipoDeAtraccion, int costo, int duracion) {
 		super(tipoDeAtraccion, costo, duracion);
 	}
 
