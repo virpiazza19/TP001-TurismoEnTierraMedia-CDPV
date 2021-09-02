@@ -3,29 +3,26 @@ package tierraMedia;
 public class PromocionAbsoluta extends Promocion {
     private int costoPaquete;
 	
-	protected PromocionAbsoluta(TipoPromocion tipoPromocion, String nombrePromocion, TipoAtraccion tipoAtraccion,
-			int cantidadAtraccionesEnPromocion, Atraccion a1, Atraccion a2, Atraccion a3, int costo) {
-		super(tipoPromocion, nombrePromocion, tipoAtraccion, cantidadAtraccionesEnPromocion);
-		this.añadirAtracciones(a1, a2, a3);
-		this.costoPromocion();
+	protected PromocionAbsoluta(String nombrePromocion, TipoAtraccion tipoAtraccion, Atraccion a1, Atraccion a2, Atraccion a3, int costoPaquete) {
+		super(nombrePromocion, tipoAtraccion);
+		super.atraccionesEnPromocion = new Atraccion[]{a1, a2, a3};
+		this.costoPaquete = costoPaquete;
+		super.costoPromocion = this.costoPromocion();
+		super.duracionPromocion = this.duracionPromocion();
 	}
-
-	private void añadirAtracciones(Atraccion a1, Atraccion a2, Atraccion a3) {
-    	for (int i = 0; i < super.atracciones.length; i++) {
-			super.atracciones[i] = a1;
-		}
-    }
 	
 	@Override
 	protected int costoPromocion() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.costoPaquete;
 	}
 
 	@Override
 	protected double duracionPromocion() {
-		// TODO Auto-generated method stub
-		return 0;
+		double duracion = 0;
+		for (Atraccion atraccion : super.atraccionesEnPromocion) {
+			duracion += atraccion.getDuracion();
+		}
+		return duracion;
 	}
 	
 
