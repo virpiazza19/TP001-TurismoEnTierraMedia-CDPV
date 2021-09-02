@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-
 public class Lector {
 	private FileReader fr = null;
 	private BufferedReader br = null;

@@ -1,54 +1,50 @@
 package tierraMedia;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 public abstract class Promocion extends Producto {
-	
-	private List <Atraccion> atracciones = new LinkedList <Atraccion>();
-	private List <Promocion> promociones = new ArrayList <Promocion>();
-	TipoPromocion promo;
-	
-	public Promocion(TipoAtraccion tipoDeAtraccion, int costo, int duracion) {
-		super(tipoDeAtraccion, costo, duracion);
+
+	private TipoAtraccion atraccionPreferida;
+	protected Atraccion[] atraccionesEnPromocion;
+	protected int costoPromocion;
+	protected double duracionPromocion;
+	protected TipoPromocion tipoPromo;
+
+	public Promocion(TipoPromocion tipoPromo, TipoAtraccion atraccionPreferida, int costo, double duracion) {
+		super(atraccionPreferida, costo, duracion);
+		this.tipoPromo = tipoPromo;
 	}
 
-	@Override
-	protected boolean esPromo() {
-		return true;
-	}
-	
-	public void agregarAtraccion(Atraccion A) {
-		atracciones.add(A);
-	}
-	
-	protected int costoPromocion(List <Atraccion> atracciones, TipoAtraccion atraccion) {
-		// Realizar calculo con atracciones del mismo TipoAtraccion
-		// Para cada atraccion dentro de la promo, sumar los costos
-		//if TipoPromocion promo=AxB no sumar costo de última atraccion;
-
-		int suma = 0;
-		for (Atraccion A: atracciones) {
-			if(A.atraccion == ) {
-			suma += A.getCosto();
+	protected int costoPromocion() {
+		int costo = 0;
+		for (Atraccion A : atraccionesEnPromocion) {
+			if (A.atraccionPreferida == atraccionPreferida) {
+				costo += A.costo;
+			}
 		}
-		}
-			return suma;
-	}
-	protected int duracionPromocion(List <Atraccion> atracciones, TipoAtraccion atraccion) {
-		// Realizar calculo con atracciones del mismo TipoAtraccion
-		// Para cada atraccion dentro de la promo, sumar las duraciones
-
-		int suma = 0;
-		for (Atraccion A: atracciones) {
-			suma += A.getDuracion();
-		}
-		return suma;
+		return costo;
 	}
 
-	protected abstract int calcularPromocion(Atraccion A1, Atraccion A2, TipoPromocion promo); 
-	//Hay que cambiar para que tome como parametro la lista de atracciones
-	
+	protected double duracionPromocion() {
+		double duracion = 0;
+		for (Atraccion A : atraccionesEnPromocion) {
+			duracion += A.duracion;
+		}
+		return duracion;
+	}
+
+	protected int getCostoPromocion() {
+		return costoPromocion;
+	}
+
+	protected double getDuracionPromocion() {
+		return duracionPromocion;
+	}
+
+	public Atraccion[] getAtraccionesEnPromocion() {
+		return this.atraccionesEnPromocion;
+	}
+
+	protected void agregarPromo(Promocion promo) { //Agrega cada objeto de promocion (cada promo) a la lista gral de productos
+		ofertas.add(promo);
+	}
 
 }
