@@ -1,10 +1,13 @@
 package tierraMedia;
 
-import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL ORDENADOR
+	
+	private List <Usuario> usuarios = new LinkedList<Usuario>();
+	
 	private String nombre;
 	private int presupuesto;
 	private double tiempoDisponible;
@@ -34,12 +37,13 @@ public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL O
 		return itinerario;
 	}
 
-	public void ordenarPorTipoAtraccion() {
-		ofertas.sort(new ComparadorPorTipoAtraccion(atraccionPreferida)); // HAY QUE CORREGIR ESTO
+	public void ordenarPorTipoAtraccion() { //NO SE SI ESTA BIEN DECLARARLA DEVUELTA ACA
+		List <Producto> ofertas = new ArrayList<Producto>();
+		ofertas.sort(new ComparadorPorTipoAtraccion(atraccionPreferida));
 	}
 
-	public void contratarPromocion() {
-		
+	public void contratarPromocion() { 
+		this.ordenarPorTipoAtraccion(); //FALTA!!!
 		
 	}
 
@@ -49,7 +53,9 @@ public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL O
 				+ tiempoDisponible + ", atraccionPreferida=" + atraccionPreferida + "]";
 	}
 	
-	
+	protected void agregarUsuario(Usuario UU) { //Agrega cada objeto de usuario (cada cada) a la lista gral de productos
+		usuarios.add(UU);
+	}
 	
 	
 }
