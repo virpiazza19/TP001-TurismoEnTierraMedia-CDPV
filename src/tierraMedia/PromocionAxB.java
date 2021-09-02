@@ -2,11 +2,8 @@ package tierraMedia;
 
 public class PromocionAxB extends Promocion {
 	
-	private Atraccion atraccionBonificada;
-
 	@Override
-	public int calcularPromocion() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int calcularPromocion(Atraccion A1, Atraccion A2) {
+		return A1.getCosto()+A2.getCosto();
 	}
 }

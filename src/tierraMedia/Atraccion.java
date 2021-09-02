@@ -1,11 +1,14 @@
 package tierraMedia;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Atraccion extends TierraMedia{
-	private String nombre;
-	private int costo;
-	private double duracion;
-	private int capacidad;
-	private TipoAtraccion atraccion;
+	String nombre;
+	int costo;
+	double duracion;
+	int capacidad;
+	TipoAtraccion atraccion;
 	
 	public String getNombre() {
 		return nombre;

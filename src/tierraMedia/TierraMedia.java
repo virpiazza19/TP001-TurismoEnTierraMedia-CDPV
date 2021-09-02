@@ -1,12 +1,19 @@
 package tierraMedia;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class TierraMedia {
-	public Atraccion [] atracciones;
+	private List <Atraccion> atracciones = new LinkedList <Atraccion>();
 	
-	protected TipoAtraccion atraccion; //NO SE SI VA ASI
+	TipoAtraccion atraccion;
 
 	public int compareTo(Atraccion A1, Atraccion A2) {
 		return A1.getAtraccion().compareTo(A2.getAtraccion());	
+	}
+	
+	public void agregarAtraccion(Atraccion A) {
+		atracciones.add(A);
 	}
 	
 }
