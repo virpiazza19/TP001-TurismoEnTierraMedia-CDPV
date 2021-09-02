@@ -7,7 +7,7 @@ public class Atraccion extends Producto{
 	String nombre;
 	int costo;
 	double duracion;
-	int capacidad;
+	int cupo;
 	TipoAtraccion atraccion;
 	
 	public String getNombre() {
@@ -22,26 +22,26 @@ public class Atraccion extends Producto{
 		return duracion;
 	}
 
-	public int getCapacidad() {
-		return capacidad;
+	public int getCupo() {
+		return cupo;
 	}
 
 	public TipoAtraccion getAtraccion() {
 		return atraccion;
 	}
 
-	public Atraccion(String nombre, int costo, double duracion, int capacidad, TipoAtraccion atraccion) {
+	public Atraccion(String nombre, int costo, double duracion, int cupo, TipoAtraccion atraccion) {
 		super();
 		this.nombre = nombre;
 		this.costo = costo;
 		this.duracion = duracion;
-		this.capacidad = capacidad;
+		this.cupo = cupo;
 		this.atraccion = atraccion;
 	}
 	
 	private int restarCapacidad() {
 		
-		return this.capacidad--;
+		return this.cupo--;
 	}
 	
 	// DUDA: modificador de acceso
