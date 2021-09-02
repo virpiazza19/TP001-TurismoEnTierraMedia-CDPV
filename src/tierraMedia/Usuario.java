@@ -2,7 +2,7 @@ package tierraMedia;
 
 import java.util.Arrays;
 
-public class Usuario extends TierraMedia { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL ORDENADOR
+public class Usuario extends Producto { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL ORDENADOR
 	private String nombre;
 	private int presupuesto;
 	private double tiempoDisponible;

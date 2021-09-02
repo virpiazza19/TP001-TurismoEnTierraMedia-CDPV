@@ -3,7 +3,7 @@ package tierraMedia;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Promocion extends TierraMedia {
+public abstract class Promocion extends Producto {
 	
 	List <Atraccion> atracciones;
 	List <Promocion> promociones = new ArrayList <Promocion>();

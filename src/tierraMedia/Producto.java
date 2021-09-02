@@ -3,7 +3,7 @@ package tierraMedia;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TierraMedia {
+public class Producto {
 	private List <Atraccion> atracciones = new LinkedList <Atraccion>();
 	
 	TipoAtraccion atraccion;

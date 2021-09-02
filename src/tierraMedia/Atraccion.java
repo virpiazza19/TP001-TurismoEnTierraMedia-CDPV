@@ -3,7 +3,7 @@ package tierraMedia;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Atraccion extends TierraMedia{
+public class Atraccion extends Producto{
 	String nombre;
 	int costo;
 	double duracion;
