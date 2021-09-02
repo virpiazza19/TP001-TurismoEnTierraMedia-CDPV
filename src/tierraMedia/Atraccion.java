@@ -43,4 +43,19 @@ public class Atraccion extends Producto{
 		
 		return this.capacidad--;
 	}
+	
+	// DUDA: modificador de acceso
+	public boolean hayCupo() {
+		return this.getCupo() > 0;
+	}
+
+	
+	// Exception es atrapada en la clase padre.
+	protected void disminuirCupo() throws NoHayCupoException {
+		if (!hayCupo()) {
+			throw new NoHayCupoException("Se agotó el CUPO en la atracción.");
+		}
+		this.cupo--;
+	}
+	
 }
