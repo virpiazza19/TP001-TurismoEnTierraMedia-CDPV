@@ -7,19 +7,19 @@ import java.util.List;
 public class Producto {
 	List <Producto> ofertas = new ArrayList<Producto>();
 	
-	String tipoDeAtraccion;
+	TipoAtraccion atraccionPreferida;
 	int costo;
 	double duracion;
 
-	public Producto(String tipoDeAtraccion, int costo, double duracion) {
-		this.tipoDeAtraccion = tipoDeAtraccion;
+	public Producto(TipoAtraccion atraccionPreferida, int costo, double duracion) {
+		this.atraccionPreferida = atraccionPreferida;
 		this.costo = costo;
 		this.duracion = duracion;
 	}
 	
 	@Override
 	public String toString() {
-		return this.getClass().getName() + " [tipoDeAtraccion=" + tipoDeAtraccion + ", costo=" + costo + ", duracion=" + duracion + "]";
+		return this.getClass().getName() + " [atraccionPreferida=" + atraccionPreferida + ", costo=" + costo + ", duracion=" + duracion + "]";
 	}
 
 	protected boolean esPromo() {
