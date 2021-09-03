@@ -1,20 +1,20 @@
 package tierraMedia;
 
 public class Atraccion extends Producto {
+	TipoAtraccion preferencia;
 	private String nombre;
 	int costo;
 	double duracion;
 	private int cupo;
-	private TipoAtraccion atraccion;
 	
-	public Atraccion(TipoAtraccion atraccionPreferida, int costo, double duracion, String nombre, int costo2,
-			double duracion2, int cupo, TipoAtraccion atraccion) {
-		super(atraccionPreferida, costo, duracion);
+	
+	public Atraccion(TipoAtraccion preferencia, String nombre, int costo, double duracion, int cupo) {
+		super();
+		this.preferencia = preferencia;
 		this.nombre = nombre;
-		costo = costo2;
-		duracion = duracion2;
+		this.costo = costo;
+		this.duracion = duracion;
 		this.cupo = cupo;
-		this.atraccion = atraccion;
 	}
 
 	public String getNombre() {
@@ -33,8 +33,8 @@ public class Atraccion extends Producto {
 		return cupo;
 	}
 
-	public TipoAtraccion getAtraccion() {
-		return atraccion;
+	public TipoAtraccion getPreferencia() {
+		return preferencia;
 	}
 
 	// DUDA: modificador de acceso

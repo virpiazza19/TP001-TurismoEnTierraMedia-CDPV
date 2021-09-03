@@ -5,13 +5,13 @@ import java.util.Comparator;
 public class ComparadorPorTipoAtraccion implements Comparator<Producto> { 
 	private TipoAtraccion tipoPreferido;
 
-	public ComparadorPorTipoAtraccion(TipoAtraccion atraccionPreferida) {
-		this.tipoPreferido = atraccionPreferida;
+	public ComparadorPorTipoAtraccion(TipoAtraccion tipoPreferido) {
+		this.tipoPreferido = tipoPreferido;
 	}
 
 	@Override
 	public int compare(Producto P1, Producto P2) {
-		if (P1.atraccionPreferida == this.tipoPreferido && P2.atraccionPreferida == this.tipoPreferido) {
+		if (P1.preferida == this.tipoPreferido && P2.preferida == this.tipoPreferido) {
 			if (P1.esPromo() && P2.esPromo()) {
 				if (Integer.compare(P1.costo, P2.costo) == 0) {
 					return -Double.compare(P1.duracion, P2.duracion);
@@ -21,7 +21,7 @@ public class ComparadorPorTipoAtraccion implements Comparator<Producto> {
 			} else {
 				return -Boolean.compare(P1.esPromo(), P2.esPromo());
 			}
-		} else if (P1.atraccionPreferida != this.tipoPreferido && P2.atraccionPreferida != this.tipoPreferido) {
+		} else if (P1.preferida != this.tipoPreferido && P2.preferida != this.tipoPreferido) {
 			if (P1.esPromo() && P2.esPromo()) {
 				if (Integer.compare(P1.costo, P2.costo) == 0) {
 					return -Double.compare(P1.duracion, P2.duracion);
@@ -38,7 +38,7 @@ public class ComparadorPorTipoAtraccion implements Comparator<Producto> {
 				return -Boolean.compare(P1.esPromo(), P2.esPromo());
 			}
 		} else {
-			if (P1.atraccionPreferida == this.tipoPreferido)
+			if (P1.preferida == this.tipoPreferido)
 				return -1;
 			return 1;
 		}

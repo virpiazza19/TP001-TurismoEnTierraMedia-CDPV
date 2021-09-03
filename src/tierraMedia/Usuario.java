@@ -12,7 +12,7 @@ public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL O
 	private int presupuesto;
 	private double tiempoDisponible;
 	private TipoAtraccion atraccionPreferida;
-	private String []itinerario; //NO SE SI ES UN ARRAY SIMPLE, PUEDE SER UNA LISTA TAMBIEN
+	private List <Usuario> itinerario = new ArrayList<Usuario>(); //NO SE SI ES UN ARRAY SIMPLE, PUEDE SER UNA LISTA TAMBIEN
 	
 	
 	public Usuario(String nombre, int presupuesto, double tiempoDisponible, TipoAtraccion atraccionPreferida) {
@@ -33,7 +33,7 @@ public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL O
 	public TipoAtraccion getAtraccionPreferida() {
 		return atraccionPreferida;
 	}
-	public String[] getItinerario() {
+	public List <Usuario> getItinerario() {
 		return itinerario;
 	}
 
@@ -42,9 +42,13 @@ public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL O
 		ofertas.sort(new ComparadorPorTipoAtraccion(atraccionPreferida));
 	}
 
-	public void contratarPromocion() { 
-		this.ordenarPorTipoAtraccion(); //FALTA!!!
-		
+	public void contratarPromocion(List <Producto> ofertas O) { //FALTA!!!
+		for(Producto O: ofertas) {
+			this.ordenarPorTipoAtraccion(atraccionPreferida);                             
+			if(this.atraccionPreferida == O.preferida && this.presupuesto < O.costo && this.tiempoDisponible < O.duracion) {
+				
+			}
+		itinerario.add(O);
 	}
 
 	@Override

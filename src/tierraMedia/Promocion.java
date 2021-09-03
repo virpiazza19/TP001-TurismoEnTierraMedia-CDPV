@@ -2,21 +2,20 @@ package tierraMedia;
 
 public abstract class Promocion extends Producto {
 
-	private TipoAtraccion atraccionPreferida;
+	private TipoAtraccion tipoPreferido;
 	protected Atraccion[] atraccionesEnPromocion;
 	protected int costoPromocion;
 	protected double duracionPromocion;
 	protected TipoPromocion tipoPromo;
 
-	public Promocion(TipoPromocion tipoPromo, TipoAtraccion atraccionPreferida, int costo, double duracion) {
-		super(atraccionPreferida, costo, duracion);
+	public Promocion(TipoPromocion tipoPromo, TipoAtraccion tipoPreferido, int costo, double duracion) {
 		this.tipoPromo = tipoPromo;
 	}
 
 	protected int costoPromocion() {
 		int costo = 0;
 		for (Atraccion A : atraccionesEnPromocion) {
-			if (A.atraccionPreferida == atraccionPreferida) {
+			if (A.preferencia == tipoPreferido) {
 				costo += A.costo;
 			}
 		}
