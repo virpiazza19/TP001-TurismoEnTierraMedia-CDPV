@@ -1,7 +1,5 @@
 package tierraMedia;
 
 public enum TipoPromocion {
-	PORCENTUAL,
-	ABSOLUTA,
-	AXB;
+	PORCENTUAL, ABOSULTA, AxB;
 }

@@ -2,12 +2,12 @@ package tierraMedia;
 
 import java.util.Arrays;
 
-public class Usuario extends TierraMedia { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL ORDENADOR
+public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL ORDENADOR
 	private String nombre;
 	private int presupuesto;
 	private double tiempoDisponible;
 	private TipoAtraccion atraccionPreferida;
-	private String []itinerario;
+	private String []itinerario; //NO SE SI ES UN ARRAY SIMPLE, PUEDE SER UNA LISTA TAMBIEN
 	
 	
 	public Usuario(String nombre, int presupuesto, double tiempoDisponible, TipoAtraccion atraccionPreferida) {
@@ -33,7 +33,7 @@ public class Usuario extends TierraMedia { //PUSE QUE EXTIENDE SOLO PARA QUE NO 
 	}
 
 	public void ordenarPorTipoAtraccion() {
-		Arrays.sort(atracciones, new ComparadorPorTipoAtraccion()); // HAY QUE CORREGIR ESTO
+		ofertas.sort(new ComparadorPorTipoAtraccion()); // HAY QUE CORREGIR ESTO
 	}
 
 	public void contratarPromocion() {
@@ -46,8 +46,5 @@ public class Usuario extends TierraMedia { //PUSE QUE EXTIENDE SOLO PARA QUE NO 
 		return "Usuario [nombre=" + nombre + ", presupuesto=" + presupuesto + ", tiempoDisponible="
 				+ tiempoDisponible + ", atraccionPreferida=" + atraccionPreferida + "]";
 	}
-	
-	
-	
 	
 }
