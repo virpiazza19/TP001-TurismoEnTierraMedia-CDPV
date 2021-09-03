@@ -16,6 +16,7 @@ public class Atraccion extends Producto {
 		this.costo = costo;
 		this.duracion = duracion;
 		this.cupo = cupo;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -48,6 +49,7 @@ public class Atraccion extends Producto {
 			throw new NoHayCupoException("Se agotó el CUPO en la atracción.");
 		}
 		this.cupo--;
+	}
 
 	protected void agregarAtraccion(Atraccion AA) { //Agrega cada objeto de atraccion (cada atraccion) a la lista gral de productos
 		ofertas.add(AA);
