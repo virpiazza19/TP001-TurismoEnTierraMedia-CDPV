@@ -50,9 +50,4 @@ public class Atraccion extends Producto {
 		}
 		this.cupo--;
 	}
-
-	protected void agregarAtraccion(Atraccion AA) { //Agrega cada objeto de atraccion (cada atraccion) a la lista gral de productos
-		ofertas.add(AA);
-	}
-
 }

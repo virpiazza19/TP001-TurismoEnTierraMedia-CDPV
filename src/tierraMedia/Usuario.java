@@ -58,9 +58,4 @@ public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL O
 				+ tiempoDisponible + ", atraccionPreferida=" + atraccionPreferida + "]";
 	}
 	
-	protected void agregarUsuario(Usuario UU) { //Agrega cada objeto de usuario (cada cada) a la lista gral de productos
-		usuarios.add(UU);
-	}
-	
-	
 }

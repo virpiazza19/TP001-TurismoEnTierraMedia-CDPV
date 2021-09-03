@@ -41,9 +41,4 @@ public abstract class Promocion extends Producto {
 	public Atraccion[] getAtraccionesEnPromocion() {
 		return this.atraccionesEnPromocion;
 	}
-
-	protected void agregarPromo(Promocion promo) { //Agrega cada objeto de promocion (cada promo) a la lista gral de productos
-		ofertas.add(promo);
-	}
-
 }
