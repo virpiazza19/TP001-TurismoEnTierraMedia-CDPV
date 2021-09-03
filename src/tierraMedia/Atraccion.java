@@ -1,12 +1,13 @@
 package tierraMedia;
 
 public class Atraccion extends Producto {
+
 	TipoAtraccion preferencia;
 	private String nombre;
 	int costo;
 	double duracion;
 	private int cupo;
-	
+
 	
 	public Atraccion(TipoAtraccion preferencia, String nombre, int costo, double duracion, int cupo) {
 		super();
@@ -15,7 +16,6 @@ public class Atraccion extends Producto {
 		this.costo = costo;
 		this.duracion = duracion;
 		this.cupo = cupo;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -36,7 +36,7 @@ public class Atraccion extends Producto {
 	public TipoAtraccion getPreferencia() {
 		return preferencia;
 	}
-
+    
 	// DUDA: modificador de acceso
 	public boolean hayCupo() {
 		return this.getCupo() > 0;
@@ -45,11 +45,10 @@ public class Atraccion extends Producto {
 	// Exception es atrapada en la clase padre.
 	protected void disminuirCupo() throws NoHayCupoException {
 		if (!hayCupo()) {
-			throw new NoHayCupoException("Se agotó el CUPO en la atracción.");
+			throw new NoHayCupoException("Se agotÃ³ el CUPO en la atracciÃ³n.");
 		}
 		this.cupo--;
-	}
-	
+
 	protected void agregarAtraccion(Atraccion AA) { //Agrega cada objeto de atraccion (cada atraccion) a la lista gral de productos
 		ofertas.add(AA);
 	}
