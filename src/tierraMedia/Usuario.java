@@ -50,6 +50,7 @@ public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL O
 			}
 		itinerario.add(O);
 	}
+	}
 
 	@Override
 	public String toString() {
