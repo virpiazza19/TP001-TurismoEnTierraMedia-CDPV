@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Lector {
+public class Lector { //FALTA EL SCANNER
 	private FileReader fr = null;
 	private BufferedReader br = null;
 

@@ -1,18 +1,15 @@
 package tierraMedia;
 
-import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL ORDENADOR
-	
-	private List <Usuario> usuarios = new LinkedList<Usuario>();
+public class Usuario {
 	
 	private String nombre;
 	private int presupuesto;
 	private double tiempoDisponible;
 	private TipoAtraccion atraccionPreferida;
-	private List <Usuario> itinerario = new ArrayList<Usuario>(); //NO SE SI ES UN ARRAY SIMPLE, PUEDE SER UNA LISTA TAMBIEN
+	private List <Usuario> itinerario = new ArrayList<Usuario>(); 
 	
 	
 	public Usuario(String nombre, int presupuesto, double tiempoDisponible, TipoAtraccion atraccionPreferida) {
@@ -37,14 +34,9 @@ public class Usuario { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL O
 		return itinerario;
 	}
 
-	public void ordenarPorTipoAtraccion() { //NO SE SI ESTA BIEN DECLARARLA DEVUELTA ACA
-		List <Producto> ofertas = new ArrayList<Producto>();
+	public void contratarPromocion(List <Producto> ofertas) { //FALTA!!!
 		ofertas.sort(new ComparadorPorTipoAtraccion(atraccionPreferida));
-	}
-
-	public void contratarPromocion(List <Producto> ofertas O) { //FALTA!!!
 		for(Producto O: ofertas) {
-			this.ordenarPorTipoAtraccion(atraccionPreferida);                             
 			if(this.atraccionPreferida == O.preferida && this.presupuesto < O.costo && this.tiempoDisponible < O.duracion) {
 				
 			}
