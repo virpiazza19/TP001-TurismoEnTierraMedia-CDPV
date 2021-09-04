@@ -23,7 +23,7 @@ public abstract class Promocion extends Producto {
 
 	protected abstract void costoPromocion();
 
-	public Atraccion[] getAtraccionesEnPromocion() {
+	protected Atraccion[] getAtraccionesEnPromocion() {
 		return this.atraccionesEnPromocion;
 	}
 

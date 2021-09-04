@@ -8,13 +8,17 @@ public class PromocionPorcentual extends Promocion {
 	public PromocionPorcentual(String nombre, Atraccion a1, Atraccion a2, Atraccion a3, double descuento) {
 		super(nombre);
 		super.atraccionesEnPromocion = new Atraccion[] { a1, a2, a3 };
+		super.duracionPromocion();
 		this.descuento = descuento / CIEN;
+		this.costoPromocion();
 	}
 
 	public PromocionPorcentual(String nombre, Atraccion a1, Atraccion a2, double descuento) {
 		super(nombre);
 		super.atraccionesEnPromocion = new Atraccion[] { a1, a2};
+		super.duracionPromocion();
 		this.descuento = descuento / CIEN;
+		this.costoPromocion();
 	}
 
 	@Override
