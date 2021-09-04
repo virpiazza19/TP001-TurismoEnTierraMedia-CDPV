@@ -3,27 +3,33 @@ package tierraMedia;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Producto { //Era TierraMedia
-	List <Producto> ofertas = new ArrayList<Producto>();
-	
-	protected TipoAtraccion preferida;
+public abstract class Producto {
+
+	protected List<Atraccion> atracciones = new ArrayList<Atraccion>(); // Almacenamos todas las atracciones creadas
+	protected List<Promocion> promociones = new ArrayList<Promocion>(); // Almacenamos todas las promos creadas
+	protected String nombre;
 	protected int costo;
 	protected double duracion;
 
-	public Producto(TipoAtraccion preferida, int costo, double duracion) {
-		this.preferida = preferida;
-		this.costo = costo;
-		this.duracion = duracion;
-	}
-	public Producto() {
-	}
-	
-	@Override
-	public String toString() {
-		return this.getClass().getName() + " [atraccionPreferida=" + preferida + ", costo=" + costo + ", duracion=" + duracion + "]";
+	public String getNombre() {
+		return nombre;
 	}
 
-	protected boolean esPromo() {
-		return false;
+	public int getCosto() {
+		return costo;
+	}
+
+	public double getDuracion() {
+		return duracion;
+	}
+
+	
+	// Metodos que usariamos en el lector
+	public void agregarAtraccion(Atraccion a) {
+		this.atracciones.add(a);
+	}
+	
+	public void agregarPromocion(Promocion p) {
+		this.promociones.add(p);
 	}
 }

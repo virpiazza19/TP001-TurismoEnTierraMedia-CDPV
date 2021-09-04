@@ -1,44 +1,30 @@
 package tierraMedia;
 
 public abstract class Promocion extends Producto {
+	// private TipoAtraccion tipoPreferido; Usado en el lector, no es atributo
+	// protected TipoPromocion tipoPromo; Usado en el lector, no es atributo
+	// protected int costoPromocion; Este atributo ya esta en la clase padre
+	// protected double duracionPromocion; Este atributo ya esta en la clase padre
 
-	private TipoAtraccion tipoPreferido;
 	protected Atraccion[] atraccionesEnPromocion;
-	protected int costoPromocion;
-	protected double duracionPromocion;
-	protected TipoPromocion tipoPromo;
 
-	public Promocion(TipoPromocion tipoPromo, TipoAtraccion tipoPreferido, int costo, double duracion) {
-		this.tipoPromo = tipoPromo;
+	public Promocion(String nombre) {
+		super.nombre = nombre;
 	}
 
-	protected int costoPromocion() {
-		int costo = 0;
-		for (Atraccion A : atraccionesEnPromocion) {
-			if (A.preferencia == tipoPreferido) {
-				costo += A.costo;
-			}
-		}
-		return costo;
-	}
-
-	protected double duracionPromocion() {
+	// Es void porque no devuelve nada, solo define el valor del atributo duracion
+	protected void duracionPromocion() {
 		double duracion = 0;
 		for (Atraccion A : atraccionesEnPromocion) {
 			duracion += A.duracion;
 		}
-		return duracion;
+		super.duracion = duracion;
 	}
 
-	protected int getCostoPromocion() {
-		return costoPromocion;
-	}
+	protected abstract void costoPromocion();
 
-	protected double getDuracionPromocion() {
-		return duracionPromocion;
-	}
-
-	public Atraccion[] getAtraccionesEnPromocion() {
+	protected Atraccion[] getAtraccionesEnPromocion() {
 		return this.atraccionesEnPromocion;
 	}
+
 }
