@@ -30,7 +30,7 @@ public class LectorDePromociones {
 				}
 			} catch (Exception e2) {
 				e2.printStackTrace();
-			}
+			} 
 		}
 
 	}

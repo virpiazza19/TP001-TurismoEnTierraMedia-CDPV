@@ -5,19 +5,19 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+
 public class Lector {
 	private FileReader fr = null;
 	private BufferedReader br = null;
-	
-	public void leerAtracciones(String archivo) {
+
+	public void leerUsuarios(String archivo) {
 		try {
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 
-			String linea = 
-					br.readLine();
+			String linea = br.readLine();
 			while (linea != null) {
-				System.out.println(crearAtraccion(linea));
+				System.out.println(crearUsuario(linea));
 				linea = br.readLine();
 			}
 		} catch (FileNotFoundException e) {
@@ -32,17 +32,18 @@ public class Lector {
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
-		}	
-		
-		
+		}
+	}
+
+
+	private Usuario crearUsuario(String linea) {
+		String[] lin = linea.split(",");
+		Usuario usuario;
+		usuario = new Usuario(lin[0], Integer.parseInt(lin[1]), Double.parseDouble(lin[2]),
+				TipoAtraccion.valueOf(lin[3].toUpperCase()));
+		//REVISAR SI ES CORRECTO EL ORDEN EN EL QUE ESTAN LOS DATOS (Nombre, presupuesto, tiempo, tipoPreferido)
+		return usuario;
 	}
 	
-	private Atraccion crearAtraccion(String linea) {
-		String[] lin = linea.split(",");
-		Atraccion atraccion;
-		atraccion = new Atraccion(lin[0], Integer.parseInt(lin[1]), Double.parseDouble(lin[2]),
-				Integer.parseInt(lin[3]), TipoAtraccion.valueOf(lin[4].toUpperCase()));
-		//MODIFICAR EL CONSTRUCTOR DE ATRACION Y UBICAR PRIMERO EL TIPO PARA COMPARABLE(ahora esta ultimo)
-		return atraccion;
-	}
+	
 }
