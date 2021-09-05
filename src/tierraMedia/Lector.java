@@ -5,7 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Lector { //FALTA EL SCANNER
+
+public class Lector {
 	private FileReader fr = null;
 	private BufferedReader br = null;
 
@@ -32,8 +33,8 @@ public class Lector { //FALTA EL SCANNER
 				e2.printStackTrace();
 			}
 		}
-
 	}
+
 
 	private Usuario crearUsuario(String linea) {
 		String[] lin = linea.split(",");
@@ -43,4 +44,6 @@ public class Lector { //FALTA EL SCANNER
 		//REVISAR SI ES CORRECTO EL ORDEN EN EL QUE ESTAN LOS DATOS (Nombre, presupuesto, tiempo, tipoPreferido)
 		return usuario;
 	}
+	
+	
 }
