@@ -7,9 +7,13 @@ import java.util.List;
 public class ParqueTierra { //Clase general que guarda las dos listas
 	
 	private List <Usuario> usuarios = new LinkedList<Usuario>();
-	private List <Producto> ofertas = new ArrayList<Producto>(); //La puse como ArrayList para poder ordenarla 
-	
-	public void main(String[]args) {
+	private List<Producto> ofertas = new ArrayList<Producto>(); // La puse como ArrayList para poder ordenarla
+
+	public static void main(String[] args) {
+		ParqueTierra parqueTierra = new ParqueTierra();
+		LectorDeUsuarios lectorDeUsuarios = new LectorDeUsuarios();
+		parqueTierra.usuarios = lectorDeUsuarios.leerUsuarios("archivos/usuarios.csv");
 		//Falta la invocación de los lectores y más
 	}
 }
+
