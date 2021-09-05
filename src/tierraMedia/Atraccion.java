@@ -1,54 +1,39 @@
 package tierraMedia;
 
-public class Atraccion extends TierraMedia {
-	private String nombre;
-	private int costo;
-	private double duracion;
+public class Atraccion extends Producto {
+
+	//private String nombre;  Este atributo ya esta en la clase padre
+	//int costo;              Este atributo ya esta en la clase padre
+	//double duracion;        Este atributo ya esta en la clase padre
+	
+	TipoAtraccion tipoDeLaAtraccion;
 	private int cupo;
-	private TipoAtraccion atraccion;
 
-	public Atraccion(String nombre, int costo, double duracion, int cupo, TipoAtraccion atraccion) {
-		// super();
-		this.nombre = nombre;
-		this.costo = costo;
-		this.duracion = duracion;
+	public Atraccion(TipoAtraccion tipo, String nombre, int costo, double duracion, int cupo) {
+		super.nombre = nombre;
+		super.costo = costo;
+		super.duracion = duracion;
+		this.tipoDeLaAtraccion = tipo;
 		this.cupo = cupo;
-		this.atraccion = atraccion;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public int getCosto() {
-		return costo;
-	}
-
-	public double getDuracion() {
-		return duracion;
 	}
 
 	public int getCupo() {
 		return cupo;
 	}
 
-	public TipoAtraccion getAtraccion() {
-		return atraccion;
+	public TipoAtraccion getTipoDeLaAtraccion() {
+		return tipoDeLaAtraccion;
 	}
 
-	
-	// DUDA: modificador de acceso
-	public boolean hayCupo() {
+	private boolean hayCupo() {
 		return this.getCupo() > 0;
 	}
 
-	
-	// Exception es atrapada en la clase padre.
+	// Exception es atrapada cuando leemos el archivo
 	protected void disminuirCupo() throws NoHayCupoException {
 		if (!hayCupo()) {
-			throw new NoHayCupoException("Se agotó el CUPO en la atracción.");
+			throw new NoHayCupoException("Se agotÃ³ el CUPO en la atracciÃ³n.");
 		}
 		this.cupo--;
 	}
-	
 }

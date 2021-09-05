@@ -1,13 +1,15 @@
 package tierraMedia;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Usuario extends TierraMedia { //PUSE QUE EXTIENDE SOLO PARA QUE NO ME MARQUE ERROR EL ORDENADOR
+public class Usuario {
+	
 	private String nombre;
 	private int presupuesto;
 	private double tiempoDisponible;
 	private TipoAtraccion atraccionPreferida;
-	private String []itinerario;
+	private List <Usuario> itinerario = new ArrayList<Usuario>(); 
 	
 	
 	public Usuario(String nombre, int presupuesto, double tiempoDisponible, TipoAtraccion atraccionPreferida) {
@@ -28,17 +30,18 @@ public class Usuario extends TierraMedia { //PUSE QUE EXTIENDE SOLO PARA QUE NO 
 	public TipoAtraccion getAtraccionPreferida() {
 		return atraccionPreferida;
 	}
-	public String[] getItinerario() {
+	public List <Usuario> getItinerario() {
 		return itinerario;
 	}
 
-	public void ordenarPorTipoAtraccion() {
-		Arrays.sort(atracciones, new ComparadorPorTipoAtraccion()); // HAY QUE CORREGIR ESTO
+	public void contratarPromocion(List <Producto> ofertas) { //FALTA!!!
+		ofertas.sort(new ComparadorPorTipoAtraccion(atraccionPreferida));
+		for(Producto O: ofertas) {
+			if(this.atraccionPreferida == O.preferida && this.presupuesto < O.costo && this.tiempoDisponible < O.duracion) {
+				
+			}
+		itinerario.add(O);
 	}
-
-	public void contratarPromocion() {
-		//FALTA		
-		
 	}
 
 	@Override
@@ -46,8 +49,5 @@ public class Usuario extends TierraMedia { //PUSE QUE EXTIENDE SOLO PARA QUE NO 
 		return "Usuario [nombre=" + nombre + ", presupuesto=" + presupuesto + ", tiempoDisponible="
 				+ tiempoDisponible + ", atraccionPreferida=" + atraccionPreferida + "]";
 	}
-	
-	
-	
 	
 }
