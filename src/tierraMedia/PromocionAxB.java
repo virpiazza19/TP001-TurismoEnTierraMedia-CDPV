@@ -21,12 +21,12 @@ public class PromocionAxB extends Promocion {
 	}
 
 	@Override
-	protected int costoPromocion() {
+	protected void costoPromocion() {
 		int costo = 0;
 		for (int i = 0; i < super.atraccionesEnPromocion.length - 1; i++) {
 			costo += super.atraccionesEnPromocion[i].costo;
 		}
-		return costo;
+		super.costo = costo;
 	}
 	
 	

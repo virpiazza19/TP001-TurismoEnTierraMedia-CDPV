@@ -34,23 +34,15 @@ public abstract class Promocion extends Producto {
 		super.nombre = nombre;
 	}
 
-	protected double duracionPromocion() {
+	protected void duracionPromocion() {
 		double duracion = 0;
 		for (Atraccion A : atraccionesEnPromocion) {
 			duracion += A.duracion;
 		}
-		return duracion;
+		super.duracion = duracion;
 	}
 
-	protected int costoPromocion() {
-		int costo = 0;
-		for (Atraccion A : atraccionesEnPromocion) {
-			if (A.preferencia == tipoPreferido) {
-				costo += A.costo;
-			}
-		}
-		return costo;
-	}
+	protected abstract void costoPromocion();
 
 	protected Atraccion[] getAtraccionesEnPromocion() {
 		return this.atraccionesEnPromocion;

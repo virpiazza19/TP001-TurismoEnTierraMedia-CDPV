@@ -9,7 +9,7 @@ public class Usuario {
 	private int presupuesto;
 	private double tiempoDisponible;
 	private TipoAtraccion atraccionPreferida;
-	private List <Usuario> itinerario = new ArrayList<Usuario>(); 
+	private List <Producto> itinerario = new ArrayList<Producto>(); 
 	
 	
 	public Usuario(String nombre, int presupuesto, double tiempoDisponible, TipoAtraccion atraccionPreferida) {
@@ -30,15 +30,19 @@ public class Usuario {
 	public TipoAtraccion getAtraccionPreferida() {
 		return atraccionPreferida;
 	}
-	public List <Usuario> getItinerario() {
+	public List <Producto> getItinerario() {
 		return itinerario;
 	}
 
-	public void sugerirOfertas(List <Producto> ofertas) { //FALTA!!!
+	public void sugerirOfertas(List <Producto> ofertas) {
 		ofertas.sort(new ComparadorPorTipoAtraccion(atraccionPreferida));
 		for(Producto O: ofertas) {
-			if(this.atraccionPreferida == O.preferida && this.presupuesto < O.costo && this.tiempoDisponible < O.duracion) {
-				
+			if(this.atraccionPreferida == O.preferida && this.presupuesto >= O.costo && this.tiempoDisponible >= O.duracion) {
+				System.out.println(O);
+			} else {
+				while(this.presupuesto >= O.costo && this.tiempoDisponible >= O.duracion) {
+					System.out.println(O);
+				}
 			}
 		}
 		

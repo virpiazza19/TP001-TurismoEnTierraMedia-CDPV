@@ -20,7 +20,7 @@ public class AtraccionTest {
 	
 	@Test
 	public void verificandoGettersTest() {
-		assertEquals("AVENTURA", a.getTipoDeLaAtraccion().name());
+		assertEquals("AVENTURA", a.getPreferencia().name());
 		assertEquals("Moria", a.getNombre());
 		assertEquals(10, a.getCosto());
 		assertEquals(2, a.getDuracion(),0);
