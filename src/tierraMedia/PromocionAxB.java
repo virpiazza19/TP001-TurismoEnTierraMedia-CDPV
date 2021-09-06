@@ -28,9 +28,7 @@ public class PromocionAxB extends Promocion {
 		}
 		super.costo = costo;
 	}
-	
-	
-	// agregar to string en atraccion
+
 	protected Atraccion getAtraccionBonificada() {
 		return this.atraccionBonificada;
 	}

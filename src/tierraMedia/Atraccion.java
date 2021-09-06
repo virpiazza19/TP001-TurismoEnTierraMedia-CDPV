@@ -44,4 +44,10 @@ public class Atraccion extends Producto {
 		}
 		this.cupo--;
 	}
+
+	@Override
+	public String toString() {
+		return "Atraccion [preferencia=" + preferencia + ", nombre=" + nombre + ", costo=" + costo + ", duracion="
+				+ duracion + ", cupo=" + cupo + "]";
+	}
 }
