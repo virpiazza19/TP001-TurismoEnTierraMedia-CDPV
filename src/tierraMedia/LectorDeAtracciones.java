@@ -11,7 +11,7 @@ public class LectorDeAtracciones {
 	
 	public void leerAtracciones(String archivo) {
 		try {
-			fr = new FileReader(archivo);
+			fr = new FileReader("atracciones.csv");
 			br = new BufferedReader(fr);
 
 			String linea = 

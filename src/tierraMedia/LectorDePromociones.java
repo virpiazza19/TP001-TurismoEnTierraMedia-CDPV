@@ -11,7 +11,7 @@ public class LectorDePromociones {
 
 	public void leerPromociones(String archivo) {
 		try {
-			fr = new FileReader(archivo);
+			fr = new FileReader("promociones.csv");
 			br = new BufferedReader(fr);
 
 			String linea = br.readLine();

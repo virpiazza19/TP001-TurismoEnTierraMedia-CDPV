@@ -6,13 +6,13 @@ import java.io.FileReader;
 import java.io.IOException;
 
 
-public class Lector {
+public class LectorUsuario {
 	private FileReader fr = null;
 	private BufferedReader br = null;
 
 	public void leerUsuarios(String archivo) {
 		try {
-			fr = new FileReader(archivo);
+			fr = new FileReader("usuarios.csv");
 			br = new BufferedReader(fr);
 
 			String linea = br.readLine();
