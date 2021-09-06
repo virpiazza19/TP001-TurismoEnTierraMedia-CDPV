@@ -1,30 +1,63 @@
 package tierraMedia;
 
 public abstract class Promocion extends Producto {
-	// private TipoAtraccion tipoPreferido; Usado en el lector, no es atributo
-	// protected TipoPromocion tipoPromo; Usado en el lector, no es atributo
-	// protected int costoPromocion; Este atributo ya esta en la clase padre
-	// protected double duracionPromocion; Este atributo ya esta en la clase padre
+	TipoAtraccion tipoPreferido; 
+	TipoPromocion tipoPromo;
+	int costoPromocion; 
+	double duracionPromocion; 
 
 	protected Atraccion[] atraccionesEnPromocion;
+	
+	public Promocion(TipoAtraccion tipoPreferido, TipoPromocion tipoPromo, int costoPromocion,
+			double duracionPromocion) {
+		super();
+		this.tipoPreferido = tipoPreferido;
+		this.tipoPromo = tipoPromo;
+		this.costoPromocion = costoPromocion;
+		this.duracionPromocion = duracionPromocion;
+	}
 
+	public TipoAtraccion getTipoPreferido() {
+		return tipoPreferido;
+	}
+
+	public TipoPromocion getTipoPromo() {
+		return tipoPromo;
+	}
+	public int getCostoPromocion() {
+		return costoPromocion;
+	}
+	public double getDuracionPromocion() {
+		return duracionPromocion;
+	}
 	public Promocion(String nombre) {
 		super.nombre = nombre;
 	}
 
-	// Es void porque no devuelve nada, solo define el valor del atributo duracion
-	protected void duracionPromocion() {
+	protected double duracionPromocion() {
 		double duracion = 0;
 		for (Atraccion A : atraccionesEnPromocion) {
 			duracion += A.duracion;
 		}
-		super.duracion = duracion;
+		return duracion;
 	}
 
-	protected abstract void costoPromocion();
+	protected int costoPromocion() {
+		int costo = 0;
+		for (Atraccion A : atraccionesEnPromocion) {
+			if (A.preferencia == tipoPreferido) {
+				costo += A.costo;
+			}
+		}
+		return costo;
+	}
 
 	protected Atraccion[] getAtraccionesEnPromocion() {
 		return this.atraccionesEnPromocion;
+	}
+	@Override
+	protected boolean esPromo() {
+		return true;
 	}
 
 }

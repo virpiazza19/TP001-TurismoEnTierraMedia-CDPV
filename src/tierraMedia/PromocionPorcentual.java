@@ -22,12 +22,12 @@ public class PromocionPorcentual extends Promocion {
 	}
 
 	@Override
-	protected void costoPromocion() {
+	protected int costoPromocion() {
 		int costo = 0;
 		for (int i = 0; i < super.atraccionesEnPromocion.length; i++) {
 			costo += super.atraccionesEnPromocion[i].costo;
 		}
-		super.costo = (int) (costo * (1-this.descuento));
+		return (int) (costo * (1-this.descuento));
 	}
 
 }

@@ -34,14 +34,14 @@ public class Usuario {
 		return itinerario;
 	}
 
-	public void contratarPromocion(List <Producto> ofertas) { //FALTA!!!
+	public void sugerirOfertas(List <Producto> ofertas) { //FALTA!!!
 		ofertas.sort(new ComparadorPorTipoAtraccion(atraccionPreferida));
 		for(Producto O: ofertas) {
 			if(this.atraccionPreferida == O.preferida && this.presupuesto < O.costo && this.tiempoDisponible < O.duracion) {
 				
 			}
-		itinerario.add(O);
-	}
+		}
+		
 	}
 
 	@Override

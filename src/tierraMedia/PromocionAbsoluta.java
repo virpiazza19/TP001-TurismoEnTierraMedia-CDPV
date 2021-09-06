@@ -21,7 +21,7 @@ public class PromocionAbsoluta extends Promocion {
 	}
 
 	@Override
-	protected void costoPromocion() {
-		super.costo = this.costoPaquete;
+	protected int costoPromocion() {
+		return this.costoPaquete;
 	}
 }

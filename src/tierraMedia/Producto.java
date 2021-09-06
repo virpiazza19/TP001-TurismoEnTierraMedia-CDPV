@@ -7,6 +7,7 @@ public abstract class Producto {
 
 	protected List<Atraccion> atracciones = new ArrayList<Atraccion>(); // Almacenamos todas las atracciones creadas
 	protected List<Promocion> promociones = new ArrayList<Promocion>(); // Almacenamos todas las promos creadas
+	TipoAtraccion preferida;
 	protected String nombre;
 	protected int costo;
 	protected double duracion;
@@ -22,7 +23,13 @@ public abstract class Producto {
 	public double getDuracion() {
 		return duracion;
 	}
-
+	public TipoAtraccion getTipoAtraccion() {
+		return preferida;
+	}
+	
+	protected boolean esPromo() {
+		return false;
+	}
 	
 	// Metodos que usariamos en el lector
 	public void agregarAtraccion(Atraccion a) {

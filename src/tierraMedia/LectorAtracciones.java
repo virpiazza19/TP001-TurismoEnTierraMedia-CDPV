@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class LectorDeAtracciones {
+public class LectorAtracciones {
 	private FileReader fr = null;
 	private BufferedReader br = null;
 	
