@@ -14,13 +14,13 @@ public class LectorUsuario {
 	public List<Usuario> leerUsuarios(String archivo) {
 		List<Usuario> usuarios= new ArrayList<Usuario>();
 		try {
-			fr = new FileReader("usuarios.csv");
+			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 
 			String linea = br.readLine();
 			while (linea != null) {
 				try {
-					System.out.println(crearUsuario(linea));
+					usuarios.add(crearUsuario(linea));
 				} catch (UsuarioException e) { // controla excepcion por error en parametros al crear usuario
 					System.out.println(e.getMessage());
 				}

@@ -37,7 +37,7 @@ public class Usuario {
 	public void sugerirOfertas(List <Producto> ofertas) {
 		ofertas.sort(new ComparadorPorTipoAtraccion(atraccionPreferida));
 		for(Producto O: ofertas) {
-			if(this.atraccionPreferida == O.preferida && this.presupuesto >= O.costo && this.tiempoDisponible >= O.duracion) {
+			if(this.atraccionPreferida == O.tipoAtraccion && this.presupuesto >= O.costo && this.tiempoDisponible >= O.duracion) {
 				System.out.println(O);
 			} else {
 				while(this.presupuesto >= O.costo && this.tiempoDisponible >= O.duracion) {

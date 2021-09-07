@@ -2,34 +2,16 @@ package tierraMedia;
 
 public class Atraccion extends Producto {
 
-	TipoAtraccion preferencia;
-	private String nombre;
-	int costo;
-	double duracion;
 	private int cupo;
 	
-	
-
-	public Atraccion(TipoAtraccion preferencia, String nombre, int costo, double duracion, int cupo) {
-		this.preferencia = preferencia;
-		this.nombre = nombre;
-		this.costo = costo;
-		this.duracion = duracion;
+	public Atraccion(String nombre, int costo, double duracion, int cupo,TipoAtraccion tipo) {
+		super.nombre = nombre;
+		super.costo = costo;
+		super.duracion = duracion;
+		super.tipoAtraccion = tipo;
 		this.cupo = cupo;
 	}
 
-	public TipoAtraccion getPreferencia() {
-		return preferencia;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public int getCosto() {
-		return costo;
-	}
-	public double getDuracion() {
-		return duracion;
-	}
 	public int getCupo() {
 		return cupo;
 	}
@@ -47,7 +29,7 @@ public class Atraccion extends Producto {
 
 	@Override
 	public String toString() {
-		return "Atraccion [preferencia=" + preferencia + ", nombre=" + nombre + ", costo=" + costo + ", duracion="
-				+ duracion + ", cupo=" + cupo + "]";
+		return "Atraccion [preferencia=" + super.getTipoAtraccion() + ", nombre=" + super.getNombre() + ", costo=" + super.getCosto() + ", duracion="
+				+ super.getDuracion() + ", cupo=" + this.getCupo() + "]";
 	}
 }

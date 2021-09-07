@@ -4,19 +4,22 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LectorPromociones {
 	private FileReader fr = null;
 	private BufferedReader br = null;
 
-	public void leerPromociones(String archivo) {
+	public List<Promocion> leerPromociones(List<Atraccion> atracciones, String archivo) {
+		List<Promocion> promociones = new ArrayList<Promocion>();
 		try {
-			fr = new FileReader("promociones.csv");
+			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 
 			String linea = br.readLine();
 			while (linea != null) {
-				System.out.println(crearPromocion(linea));
+				promociones.add(crearPromocion(linea, atracciones));
 				linea = br.readLine();
 			}
 		} catch (FileNotFoundException e) {
@@ -30,20 +33,23 @@ public class LectorPromociones {
 				}
 			} catch (Exception e2) {
 				e2.printStackTrace();
-			} 
+			}
 		}
+		return null;
 
 	}
 
-	private Promocion crearPromocion(String linea) {
+	private Promocion crearPromocion(String linea, List<Atraccion> atracciones) {
 		String[] lin = linea.split(",");
-		Promocion promocion;
-		
-		if (lin[1].toUpperCase() == "AXB") {
-		if (lin.length == 5) {
-			promocion = new PromocionAxB(TipoAtraccion.valueOf(lin[0].toUpperCase()), lin[2], lin[3], lin[4];	
-	  	}
-		if (lin.length == 4) {
+		if (lin[0].toUpperCase() == "AXB") {
+			if (lin.length == 6) {
+				Atraccion a1 = buscarAtracacion(atracciones, lin[3]);
+				Atraccion a2 = buscarAtracacion(atracciones, lin[4]);
+				Atraccion a3 = buscarAtracacion(atracciones, lin[5]);
+				
+				return new PromocionAxB(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3);	
+	  	    }
+		/*if (lin.length == 4) {
 			promocion = new PromocionAxB(TipoAtraccion.valueOf(lin[0].toUpperCase()), lin[2],lin[3]);	
 		}
 		
@@ -68,8 +74,18 @@ public class LectorPromociones {
 			}
 		}
 			
+		}*/
 		}
-		return promocion;
+		return null;
 	}
-}
+	
+	private Atraccion buscarAtracacion(List<Atraccion> lista, String nombre) {
+		
+		for (Atraccion atraccion : lista) {
+			if (atraccion.getNombre().equals(nombre)) {
+				return atraccion;
+			}
+		}
+		return null;
+	}
 }

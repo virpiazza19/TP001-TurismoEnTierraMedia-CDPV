@@ -8,13 +8,8 @@ public abstract class Promocion extends Producto {
 
 	protected Atraccion[] atraccionesEnPromocion;
 	
-	public Promocion(TipoAtraccion tipoPreferido, TipoPromocion tipoPromo, int costoPromocion,
-			double duracionPromocion) {
+	public Promocion() {
 		super();
-		this.tipoPreferido = tipoPreferido;
-		this.tipoPromo = tipoPromo;
-		this.costoPromocion = costoPromocion;
-		this.duracionPromocion = duracionPromocion;
 	}
 
 	public TipoAtraccion getTipoPreferido() {
