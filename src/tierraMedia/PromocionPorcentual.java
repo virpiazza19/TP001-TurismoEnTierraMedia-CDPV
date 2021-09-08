@@ -5,16 +5,18 @@ public class PromocionPorcentual extends Promocion {
 	private static final int CIEN = 100;
 	private double descuento;
 
-	public PromocionPorcentual(String nombre, Atraccion a1, Atraccion a2, Atraccion a3, double descuento) {
-		super(nombre);
+	public PromocionPorcentual(TipoAtraccion tipo, String nombre, Atraccion a1, Atraccion a2, Atraccion a3, double descuento) {
+		super.tipoAtraccion = tipo;
+		super.nombre = nombre;
 		super.atraccionesEnPromocion = new Atraccion[] { a1, a2, a3 };
 		super.duracionPromocion();
 		this.descuento = descuento / CIEN;
 		this.costoPromocion();
 	}
 
-	public PromocionPorcentual(String nombre, Atraccion a1, Atraccion a2, double descuento) {
-		super(nombre);
+	public PromocionPorcentual(TipoAtraccion tipo,String nombre, Atraccion a1, Atraccion a2, double descuento) {
+		super.tipoAtraccion = tipo;
+		super.nombre = nombre;
 		super.atraccionesEnPromocion = new Atraccion[] { a1, a2};
 		super.duracionPromocion();
 		this.descuento = descuento / CIEN;

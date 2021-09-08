@@ -25,17 +25,21 @@ public class ParqueTierra {
 		
 		promociones = lp.leerPromociones(atracciones, "archivos/promociones.csv");
 		
-		for (Promocion promocion : promociones) {
-			System.out.println(promocion);
+		for (Usuario usuario : parque.usuarios) {
+			System.out.println(usuario);
 		}
 
-		/*for (Promocion promocion : promociones) {
+		for (Promocion promocion : promociones) {
 			parque.productos.add(promocion);
 		}
 
 		for (Atraccion atraccion : atracciones) {
 			parque.productos.add(atraccion);
-		}*/
+		}
+		
+		for (Producto producto : parque.productos) {
+			System.out.println(producto);
+		}
 
 	}
 

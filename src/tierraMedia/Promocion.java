@@ -1,5 +1,7 @@
 package tierraMedia;
 
+import java.util.Arrays;
+
 public abstract class Promocion extends Producto {
 	TipoAtraccion tipoPreferido; 
 	TipoPromocion tipoPromo;
@@ -47,4 +49,12 @@ public abstract class Promocion extends Producto {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Promocion [Nombre=" + nombre + ", atraccionesEnPromocion="
+				+ Arrays.toString(atraccionesEnPromocion) + ", costoPromocion=" + costoPromocion + "]";
+	}
+
+	
+	
 }
