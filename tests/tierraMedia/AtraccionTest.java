@@ -10,7 +10,7 @@ public class AtraccionTest {
 	
 	@Before
 	public void setUp() {
-		a = new Atraccion(TipoAtraccion.AVENTURA, "Moria", 10, 2, 6);
+		a = new Atraccion("Moria", 10, 2, 6, TipoAtraccion.AVENTURA);
 	}
     
 	@Test
@@ -20,7 +20,7 @@ public class AtraccionTest {
 	
 	@Test
 	public void verificandoGettersTest() {
-		assertEquals("AVENTURA", a.getPreferencia().name());
+		assertEquals("AVENTURA", a.tipoAtraccion.name());
 		assertEquals("Moria", a.getNombre());
 		assertEquals(10, a.getCosto());
 		assertEquals(2, a.getDuracion(),0);

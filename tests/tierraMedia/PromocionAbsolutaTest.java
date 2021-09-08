@@ -14,11 +14,11 @@ public class PromocionAbsolutaTest {
 
 	@Before
 	public void setUp() {
-		a1 = new Atraccion(TipoAtraccion.AVENTURA, "Moria", 10, 2, 6);
-		a2 = new Atraccion(TipoAtraccion.AVENTURA, "Mordor", 25, 3, 150);
-		a3 = new Atraccion(TipoAtraccion.AVENTURA, "Bosque Negro", 3, 4, 12);
-		pa3 = new PromocionAbsoluta("Promo 3 Atracciones", a1, a2, a3, 30);
-		pa2 = new PromocionAbsoluta("Promo 2 Atracciones", a1, a2, 20);
+		a1 = new Atraccion("Moria", 10, 2, 6, TipoAtraccion.AVENTURA);
+		a2 = new Atraccion("Mordor", 25, 3, 150, TipoAtraccion.AVENTURA);
+		a3 = new Atraccion("Bosque Negro", 3, 4, 12, TipoAtraccion.AVENTURA);
+		pa3 = new PromocionAbsoluta(TipoAtraccion.AVENTURA, "Promo 3 Atracciones", a1, a2, a3, 30);
+		pa2 = new PromocionAbsoluta(TipoAtraccion.AVENTURA, "Promo 2 Atracciones", a1, a2, 20);
 	}
 
 	@Test

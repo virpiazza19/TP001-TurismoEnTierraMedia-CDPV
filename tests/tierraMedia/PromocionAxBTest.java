@@ -15,11 +15,11 @@ public class PromocionAxBTest {
 
 	@Before
 	public void setUp() {
-		a1 = new Atraccion(TipoAtraccion.AVENTURA, "Moria", 10, 2, 6);
-		a2 = new Atraccion(TipoAtraccion.AVENTURA, "Mordor", 25, 3, 150);
-		aBonificada = new Atraccion(TipoAtraccion.AVENTURA, "Bosque Negro", 3, 4, 12);
-		p3x2 = new PromocionAxB("Promo 3 Atracciones por el Precio de 2", a1, a2, aBonificada);
-		p2x1 = new PromocionAxB("Promo 2 Atracciones por el Precio de 1", a1, aBonificada);
+		a1 = new Atraccion("Moria", 10, 2, 6, TipoAtraccion.AVENTURA);
+		a2 = new Atraccion("Mordor", 25, 3, 150, TipoAtraccion.AVENTURA);
+		aBonificada = new Atraccion("Bosque Negro", 3, 4, 12, TipoAtraccion.AVENTURA);
+		p3x2 = new PromocionAxB(TipoAtraccion.AVENTURA, "Promo 3 Atracciones por el Precio de 2", a1, a2, aBonificada);
+		p2x1 = new PromocionAxB(TipoAtraccion.AVENTURA, "Promo 2 Atracciones por el Precio de 1", a1, aBonificada);
 	}
 
 	@Test
