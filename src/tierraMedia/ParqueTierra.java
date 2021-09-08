@@ -19,15 +19,15 @@ public class ParqueTierra {
 		LectorAtracciones la = new LectorAtracciones();
 		LectorPromociones lp = new LectorPromociones();
 
-		parque.usuarios = lu.leerUsuarios("archivos/usuarios.csv");
+		parque.usuarios = lu.leerUsuarios("archivosDeEntrada/usuarios.csv");
 		for (Usuario usuario : parque.usuarios) {
 			System.out.println(usuario);
 		}
-		atracciones = la.leerAtracciones("archivos/atracciones.csv");
+		atracciones = la.leerAtracciones("archivosDeEntrada/atracciones.csv");
 		for (Atraccion atraccion : atracciones) {
 			parque.productos.add(atraccion);
 		}
-		promociones = lp.leerPromociones(atracciones, "archivos/promociones.csv");
+		promociones = lp.leerPromociones(atracciones, "archivosDeEntrada/promociones.csv");
 		for (Promocion promocion : promociones) {
 			parque.productos.add(promocion);
 		}
