@@ -13,30 +13,25 @@ public class ParqueTierra {
 	public static void main(String[] args) {
 
 		ParqueTierra parque = new ParqueTierra();
-		List<Atraccion> atracciones = new ArrayList<Atraccion>();
-		List<Promocion> promociones = new ArrayList<Promocion>();
+		List<Atraccion> atracciones;
+		List<Promocion> promociones;
 		LectorUsuario lu = new LectorUsuario();
 		LectorAtracciones la = new LectorAtracciones();
 		LectorPromociones lp = new LectorPromociones();
 
 		parque.usuarios = lu.leerUsuarios("archivos/usuarios.csv");
-
-		atracciones = la.leerAtracciones("archivos/atracciones.csv");
-		
-		promociones = lp.leerPromociones(atracciones, "archivos/promociones.csv");
-		
 		for (Usuario usuario : parque.usuarios) {
 			System.out.println(usuario);
 		}
-
+		atracciones = la.leerAtracciones("archivos/atracciones.csv");
+		for (Atraccion atraccion : atracciones) {
+			parque.productos.add(atraccion);
+		}
+		promociones = lp.leerPromociones(atracciones, "archivos/promociones.csv");
 		for (Promocion promocion : promociones) {
 			parque.productos.add(promocion);
 		}
 
-		for (Atraccion atraccion : atracciones) {
-			parque.productos.add(atraccion);
-		}
-		
 		for (Producto producto : parque.productos) {
 			System.out.println(producto);
 		}
@@ -60,13 +55,13 @@ public class ParqueTierra {
 			System.out.println();
 		}
 		for (Usuario U: usuarios) {
-		for (Producto O:ofertas) { // para cada oferta de la lista de ofertas
+		for (Producto O:productos) { // para cada oferta de la lista de ofertas
 				if(O.esPromo()) { // si la oferta es una promo
 					O.atracciones  // tiene que chequear que ninguna de las atracciones que estan adentro este adentro de la lista de Itinerario
 				} else if(!O.esPromo()) { //si no es promo 
 					// tiene que chequear que la atraccion se haya aceptado dentro de una promo
 				}
-			U.sugerirOfertas(ofertas); //Una vez que cumple con lo anterior, sugiere la oferta correcta
+			U.sugerirProductos(productos); //Una vez que cumple con lo anterior, sugiere la oferta correcta
 			if(sc.equals("SI")) {
 			itinerario.add(O); 
 			}

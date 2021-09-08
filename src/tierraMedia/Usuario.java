@@ -34,9 +34,9 @@ public class Usuario {
 		return itinerario;
 	}
 
-	public void sugerirOfertas(List <Producto> ofertas) {
-		ofertas.sort(new ComparadorPorTipoAtraccion(atraccionPreferida));
-		for(Producto O: ofertas) {
+	public void sugerirProductos(List <Producto> promociones) {
+		promociones.sort(new ComparadorPorTipoAtraccion(atraccionPreferida));
+		for(Producto O: promociones) {
 			if(this.atraccionPreferida == O.tipoAtraccion && this.presupuesto >= O.costo && this.tiempoDisponible >= O.duracion) {
 				System.out.println(O);
 			} else {

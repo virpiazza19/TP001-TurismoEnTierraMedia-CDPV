@@ -5,8 +5,8 @@ import java.util.List;
 
 public abstract class Producto {
 
-	protected List<Atraccion> atracciones = new ArrayList<Atraccion>(); // Almacenamos todas las atracciones creadas
-	protected List<Promocion> promociones = new ArrayList<Promocion>(); // Almacenamos todas las promos creadas
+	protected List<Atraccion> atracciones = new ArrayList<Atraccion>();
+	protected List<Promocion> promociones = new ArrayList<Promocion>();
 	protected TipoAtraccion tipoAtraccion;
 	protected String nombre;
 	protected int costo;
