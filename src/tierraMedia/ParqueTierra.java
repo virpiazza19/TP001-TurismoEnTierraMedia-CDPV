@@ -5,19 +5,42 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ParqueTierra { // Clase general que guarda las dos listas
+public class ParqueTierra {
 
 	private List<Usuario> usuarios = new LinkedList<Usuario>();
-	private List<Producto> ofertas = new ArrayList<Producto>(); // La puse como ArrayList para poder ordenarla
+	private List<Producto> productos = new ArrayList<Producto>();
 
 	public static void main(String[] args) {
-		List<Usuario> usuarios;
-		List<Producto> ofertas;
 
-		ParqueTierra parqueTierra = new ParqueTierra();
-		LectorUsuario lector = new LectorUsuario();
-		parqueTierra.usuarios = lector.leerUsuarios("archivos/usuarios.csv");
+		ParqueTierra parque = new ParqueTierra();
+		List<Atraccion> atracciones = new ArrayList<Atraccion>();
+		List<Promocion> promociones = new ArrayList<Promocion>();
+		LectorUsuario lu = new LectorUsuario();
+		LectorAtracciones la = new LectorAtracciones();
+		LectorPromociones lp = new LectorPromociones();
+
+		parque.usuarios = lu.leerUsuarios("archivos/usuarios.csv");
+
+		atracciones = la.leerAtracciones("archivos/atracciones.csv");
 		
+		promociones = lp.leerPromociones(atracciones, "archivos/promociones.csv");
+		
+		for (Usuario usuario : parque.usuarios) {
+			System.out.println(usuario);
+		}
+
+		for (Promocion promocion : promociones) {
+			parque.productos.add(promocion);
+		}
+
+		for (Atraccion atraccion : atracciones) {
+			parque.productos.add(atraccion);
+		}
+		
+		for (Producto producto : parque.productos) {
+			System.out.println(producto);
+		}
+
 	}
 
 	public void aceptarOferta() { //NO SE SI LA FIRMA VA ASÍ, ME TIRA ERROR cuando lo intento hacer dentro del main
@@ -51,6 +74,5 @@ public class ParqueTierra { // Clase general que guarda las dos listas
 		System.out.println(itinerario);
 	}
 	}
-
 
 }

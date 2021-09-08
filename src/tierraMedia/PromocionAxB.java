@@ -4,16 +4,18 @@ public class PromocionAxB extends Promocion {
 
 	private Atraccion atraccionBonificada;
 
-	public PromocionAxB(String nombre, Atraccion a1, Atraccion a2, Atraccion atraccionBonificada) {
-		super(nombre);
+	public PromocionAxB(TipoAtraccion tipo, String nombre, Atraccion a1, Atraccion a2, Atraccion atraccionBonificada) {
+		super.tipoAtraccion = tipo;
+		super.nombre = nombre;
 		super.atraccionesEnPromocion = new Atraccion[] { a1, a2, atraccionBonificada };
 		super.duracionPromocion();
 		this.atraccionBonificada = atraccionBonificada;
 		this.costoPromocion();
 	}
 
-	public PromocionAxB(String nombre, Atraccion a1, Atraccion atraccionBonificada) {
-		super(nombre);
+	public PromocionAxB(TipoAtraccion tipo, String nombre, Atraccion a1, Atraccion atraccionBonificada) {
+		super.tipoAtraccion = tipo;
+		super.nombre = nombre;
 		super.atraccionesEnPromocion = new Atraccion[] { a1, atraccionBonificada };
 		super.duracionPromocion();
 		this.atraccionBonificada = atraccionBonificada;

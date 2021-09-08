@@ -4,19 +4,22 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LectorPromociones {
 	private FileReader fr = null;
 	private BufferedReader br = null;
 
-	public void leerPromociones(String archivo) {
+	public List<Promocion> leerPromociones(List<Atraccion> atracciones, String archivo) {
+		List<Promocion> promociones = new ArrayList<Promocion>();
 		try {
-			fr = new FileReader("promociones.csv");
+			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 
 			String linea = br.readLine();
 			while (linea != null) {
-				System.out.println(crearPromocion(linea));
+				promociones.add(crearPromocion(linea, atracciones));
 				linea = br.readLine();
 			}
 		} catch (FileNotFoundException e) {
@@ -30,46 +33,76 @@ public class LectorPromociones {
 				}
 			} catch (Exception e2) {
 				e2.printStackTrace();
-			} 
+			}
 		}
+		return promociones;
 
 	}
 
-	private Promocion crearPromocion(String linea) {
+	private Promocion crearPromocion(String linea, List<Atraccion> atracciones) {
 		String[] lin = linea.split(",");
-		Promocion promocion;
-		
-		if (lin[1].toUpperCase() == "AXB") {
-		if (lin.length == 5) {
-			promocion = new PromocionAxB(TipoAtraccion.valueOf(lin[0].toUpperCase()), lin[2], lin[3], lin[4];	
-	  	}
-		if (lin.length == 4) {
-			promocion = new PromocionAxB(TipoAtraccion.valueOf(lin[0].toUpperCase()), lin[2],lin[3]);	
+		if (lin[0].toUpperCase().equals("AXB")) {
+			return crearAxB(atracciones, lin);
 		}
-		
-		else if (lin[0].toUpperCase() == "ABSOLUTA") {
-			if (lin.length == 5) {
-				promocion = new PromocionAbsoluta(TipoAtraccion.valueOf(lin[0].toUpperCase()), lin[2], lin[3], 
-					Integer.parseInt(lin[4]));	
-		  	}
-			if (lin.length == 6) {
-				promocion = new PromocionAbsoluta(TipoAtraccion.valueOf(lin[0].toUpperCase()), lin[2], lin[3], lin[4], 
-					Integer.parseInt(lin[5]));	
-			}
-			
-		else if (lin[0].toUpperCase() == "PORCENTUAL") {
-			if (lin.length == 5) {
-				promocion = new PromocionPorcentual(TipoAtraccion.valueOf(lin[0].toUpperCase()), lin[2], lin[3], 
-					Double.parseDouble(lin[4]));	
-		  	}
-			if (lin.length == 6) {
-				promocion = new PromocionPorcentual(TipoAtraccion.valueOf(lin[0].toUpperCase()), lin[2], lin[3], lin[4], 
-					Double.parseDouble(lin[5]));	
-			}
+		if (lin[0].toUpperCase().equals("ABSOLUTA")) {
+			return crearAbsoluta(atracciones, lin);
 		}
-			
+		if (lin[0].toUpperCase().equals("PORCENTUAL")) {
+			return crearPorcentual(atracciones, lin);
 		}
-		return promocion;
+		return null;
 	}
-}
+
+	private Promocion crearPorcentual(List<Atraccion> a, String[] lin) {
+		Atraccion a1 = buscarAtraccion(a, lin[3]);
+		Atraccion a2 = buscarAtraccion(a, lin[4]);
+		if (lin.length == 6) {
+			return new PromocionPorcentual(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2,
+					Integer.parseInt(lin[5]));
+		}
+		if (lin.length == 7) {
+			Atraccion a3 = buscarAtraccion(a, lin[5]);
+			return new PromocionPorcentual(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3,
+					Integer.parseInt(lin[5]));
+		}
+		return null;
+	}
+
+	private Promocion crearAbsoluta(List<Atraccion> a, String[] lin) {
+		Atraccion a1 = buscarAtraccion(a, lin[3]);
+		Atraccion a2 = buscarAtraccion(a, lin[4]);
+		if (lin.length == 6) {
+			return new PromocionAbsoluta(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2,
+					Integer.parseInt(lin[5]));
+		}
+		if (lin.length == 7) {
+			Atraccion a3 = buscarAtraccion(a, lin[5]);
+			return new PromocionAbsoluta(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3,
+					Integer.parseInt(lin[5]));
+		}
+		return null;
+	}
+
+	private Promocion crearAxB(List<Atraccion> a, String[] lin) {
+		Atraccion a1 = buscarAtraccion(a, lin[3]);
+		Atraccion a2 = buscarAtraccion(a, lin[4]);
+		if (lin.length == 6) {
+			Atraccion a3 = buscarAtraccion(a, lin[5]);
+			return new PromocionAxB(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3);
+		}
+		if (lin.length == 7) {
+			return new PromocionAxB(TipoAtraccion.valueOf(lin[0].toUpperCase()), lin[2], a1, a2);
+		}
+		return null;
+	}
+
+	private Atraccion buscarAtraccion(List<Atraccion> lista, String nombre) {
+		Atraccion a = null;
+		for (Atraccion atraccion : lista) {
+			if (atraccion.getNombre().equals(nombre)) {
+				return atraccion;
+			}
+		}
+		return a;
+	}
 }

@@ -4,20 +4,23 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LectorAtracciones {
 	private FileReader fr = null;
 	private BufferedReader br = null;
 	
-	public void leerAtracciones(String archivo) {
+	public List<Atraccion> leerAtracciones(String archivo) {
+		List<Atraccion> atracciones= new ArrayList<Atraccion>();
 		try {
-			fr = new FileReader("atracciones.csv");
+			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 
 			String linea = 
 					br.readLine();
 			while (linea != null) {
-				System.out.println(crearAtraccion(linea));
+				atracciones.add(crearAtraccion(linea));
 				linea = br.readLine();
 			}
 		} catch (FileNotFoundException e) {
@@ -32,9 +35,8 @@ public class LectorAtracciones {
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
-		}	
-		
-		
+		}
+		return atracciones;	
 	}
 	
 	private Atraccion crearAtraccion(String linea) {
@@ -42,7 +44,6 @@ public class LectorAtracciones {
 		Atraccion atraccion;
 		atraccion = new Atraccion(lin[0], Integer.parseInt(lin[1]), Double.parseDouble(lin[2]),
 				Integer.parseInt(lin[3]), TipoAtraccion.valueOf(lin[4].toUpperCase()));
-		//MODIFICAR EL CONSTRUCTOR DE ATRACION Y UBICAR PRIMERO EL TIPO PARA COMPARABLE(ahora esta ultimo)
 		return atraccion;
 	}
 }
