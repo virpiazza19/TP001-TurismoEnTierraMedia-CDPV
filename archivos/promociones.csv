@@ -1,3 +1,12 @@
-AXB,aventura,Promocion2x1,Moria,Mordor,Bosque Negro
-Absoluta,degustacion,Promo Absoluta,La Comarca,Moria,100
-porcentual,degustacion,Promo 30% dto,La Comarca,Moria,30
+AxB,aventura,Promocion 2x1,Moria,Bosque Negro
+AxB,paisaje,Promocion 3x2,Minas Tirith,Abismo de Helm, Erebor
+AxB,degustacion,Promocion 2x1,Lothlórien,La Comarca
+ABSOLUTA,aventura,Promo Absoluta,Mordor,Bosque Negro,30
+ABSOLUTA,paisaje,Promo Absoluta,Minas Tirith,Erebor,20
+ABSOLUTA,degustacion,Promo Absoluta,Lothlórien,La Comarca,40
+PORCENTUAL,aventura,Promo 10%dto,Moria,Mordor,10
+PORCENTUAL,paisaje,Promo 30%dto,Minas Tirith,Abismo de Helm, Erebor,30
+PORCENTUAL,degustacion,Promo 20%dto,Lothlórien,La Comarca,20
+AxB,avetur,Promocion 2x1,Moria
+ABSOLUT,paisaje,Promo Absoluta,Erebor,20
+PORCENTUAL,degusta,Promo 20%dto,Lothlórien,La Comarca,10

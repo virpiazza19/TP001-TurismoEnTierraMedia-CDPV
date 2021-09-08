@@ -15,8 +15,8 @@ public class PromocionPorcentualTest {
 
 	@Before
 	public void setUp() {
-		a1 = new Atraccion("Moria",10, 2, 6, TipoAtraccion.AVENTURA);
-		a2 = new Atraccion("Mordor", 25, 3, 150, TipoAtraccion.AVENTURA);
+		a1 = new Atraccion("Moria", 10, 2, 6, TipoAtraccion.AVENTURA);
+		a2 = new Atraccion("Mordor", 25, 3, 4, TipoAtraccion.AVENTURA);
 		a3 = new Atraccion("Bosque Negro", 3, 4, 12, TipoAtraccion.AVENTURA);
 		p3dto = new PromocionPorcentual(TipoAtraccion.AVENTURA, "Promo 3 Atracciones con descuento", a1, a2, a3, 30);
 		p2dto = new PromocionPorcentual(TipoAtraccion.AVENTURA, "Promo 2 Atracciones con descuento", a1, a2, 50);
