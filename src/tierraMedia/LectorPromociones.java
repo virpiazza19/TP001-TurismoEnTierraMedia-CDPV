@@ -53,41 +53,41 @@ public class LectorPromociones {
 		return null;
 	}
 
-	private Promocion crearPorcentual(List<Atraccion> a, String[] lin) {
-		Atraccion a1 = buscarAtraccion(a, lin[3]);
-		Atraccion a2 = buscarAtraccion(a, lin[4]);
+	private Promocion crearPorcentual(List<Atraccion> atracciones, String[] lin) {
+		Atraccion a1 = buscarAtraccion(atracciones, lin[3]);
+		Atraccion a2 = buscarAtraccion(atracciones, lin[4]);
 		if (lin.length == 6) {
 			return new PromocionPorcentual(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2,
 					Integer.parseInt(lin[5]));
 		}
 		if (lin.length == 7) {
-			Atraccion a3 = buscarAtraccion(a, lin[5]);
+			Atraccion a3 = buscarAtraccion(atracciones, lin[5]);
 			return new PromocionPorcentual(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3,
 					Integer.parseInt(lin[5]));
 		}
 		return null;
 	}
 
-	private Promocion crearAbsoluta(List<Atraccion> a, String[] lin) {
-		Atraccion a1 = buscarAtraccion(a, lin[3]);
-		Atraccion a2 = buscarAtraccion(a, lin[4]);
+	private Promocion crearAbsoluta(List<Atraccion> atracciones, String[] lin) {
+		Atraccion a1 = buscarAtraccion(atracciones, lin[3]);
+		Atraccion a2 = buscarAtraccion(atracciones, lin[4]);
 		if (lin.length == 6) {
 			return new PromocionAbsoluta(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2,
 					Integer.parseInt(lin[5]));
 		}
 		if (lin.length == 7) {
-			Atraccion a3 = buscarAtraccion(a, lin[5]);
+			Atraccion a3 = buscarAtraccion(atracciones, lin[5]);
 			return new PromocionAbsoluta(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3,
 					Integer.parseInt(lin[5]));
 		}
 		return null;
 	}
 
-	private Promocion crearAxB(List<Atraccion> a, String[] lin) {
-		Atraccion a1 = buscarAtraccion(a, lin[3]);
-		Atraccion a2 = buscarAtraccion(a, lin[4]);
+	private Promocion crearAxB(List<Atraccion> atracciones, String[] lin) {
+		Atraccion a1 = buscarAtraccion(atracciones, lin[3]);
+		Atraccion a2 = buscarAtraccion(atracciones, lin[4]);
 		if (lin.length == 6) {
-			Atraccion a3 = buscarAtraccion(a, lin[5]);
+			Atraccion a3 = buscarAtraccion(atracciones, lin[5]);
 			return new PromocionAxB(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3);
 		}
 		if (lin.length == 7) {
@@ -96,9 +96,9 @@ public class LectorPromociones {
 		return null;
 	}
 
-	private Atraccion buscarAtraccion(List<Atraccion> lista, String nombre) {
+	private Atraccion buscarAtraccion(List<Atraccion> atracciones, String nombre) {
 		Atraccion a = null;
-		for (Atraccion atraccion : lista) {
+		for (Atraccion atraccion : atracciones) {
 			if (atraccion.getNombre().equals(nombre)) {
 				return atraccion;
 			}

@@ -21,7 +21,7 @@ public class ParqueTierra {
 
 		parque.usuarios = lu.leerUsuarios("archivosDeEntrada/usuarios.csv");
 		for (Usuario usuario : parque.usuarios) {
-			System.out.println(usuario);
+			System.out.println(usuario); //No se si hay que mostrarlos
 		}
 		atracciones = la.leerAtracciones("archivosDeEntrada/atracciones.csv");
 		for (Atraccion atraccion : atracciones) {
