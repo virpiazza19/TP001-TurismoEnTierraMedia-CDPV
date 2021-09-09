@@ -12,7 +12,7 @@ public class LectorUsuario {
 	private BufferedReader br = null;
 
 	public List<Usuario> leerUsuarios(String archivo) {
-		List<Usuario> usuarios= new ArrayList<Usuario>();
+		List<Usuario> usuarios = new ArrayList<Usuario>();
 		try {
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
@@ -25,8 +25,7 @@ public class LectorUsuario {
 					System.out.println(e.getMessage());
 				}
 				linea = br.readLine();
-
-			}
+			} 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -43,21 +42,23 @@ public class LectorUsuario {
 		return usuarios;
 	}
 
-	private Usuario crearUsuario(String linea) throws UsuarioException {
+	private Usuario crearUsuario(String linea) throws UsuarioException   {
 		String[] lin = linea.split(",");
-		if (lin.length != 4) { // lanza excepcion cuando el archivo tiene mas de 4 parametros//
-			throw new UsuarioException("Cantidad incorrecta de parametros");
+		if (lin.length != 4) { 
+			throw new UsuarioException("Cantidad incorrecta de parametros en la linea [" + linea +  "]  ");
 		}
+		if (Integer.parseInt(lin[1])<= 0){
+			throw new UsuarioException("El presupuesto debe ser mayor a cero");	
+		} 
 		Usuario usuario;
 		try {
 			usuario = new Usuario(lin[0], Integer.parseInt(lin[1]), Double.parseDouble(lin[2]),
 					TipoAtraccion.valueOf(lin[3].toUpperCase()));
-		} catch (NumberFormatException e) {
-			throw new UsuarioException("Uno de los parametros no es un numero");
+			} catch (NumberFormatException e) {
+			throw new UsuarioException("Uno de los parametros ingresados en la linea [" + linea +  "] no es un numero valido");
 		} catch (IllegalArgumentException e) {
-			throw new UsuarioException((lin[3] + " " + "no es una atraccion valida"));
+			throw new UsuarioException(("El parametro " + lin[3] + " ingresado en la linea [" + linea +  "]  no corresponde a un tipo de atraccion valido"));
 		}
 		return usuario;
 	}
-
 }
