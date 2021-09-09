@@ -16,11 +16,13 @@ public class LectorAtracciones {
 		try {
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
-
-			String linea = 
-					br.readLine();
+			String linea = br.readLine();
 			while (linea != null) {
+				try {
 				atracciones.add(crearAtraccion(linea));
+				} catch (AtraccionException e) { 
+					System.out.println(e.getMessage());
+				}
 				linea = br.readLine();
 			}
 		} catch (FileNotFoundException e) {
@@ -39,11 +41,20 @@ public class LectorAtracciones {
 		return atracciones;	
 	}
 	
-	private Atraccion crearAtraccion(String linea) {
+	private Atraccion crearAtraccion(String linea) throws AtraccionException {
 		String[] lin = linea.split(",");
-		Atraccion atraccion;
-		atraccion = new Atraccion(lin[0], Integer.parseInt(lin[1]), Double.parseDouble(lin[2]),
+		if (lin.length != 5) { 
+			throw new AtraccionException("Cantidad incorrecta de parametros");
+		}
+		Atraccion A;
+		try {
+		A = new Atraccion(lin[0], Integer.parseInt(lin[1]), Double.parseDouble(lin[2]), 
 				Integer.parseInt(lin[3]), TipoAtraccion.valueOf(lin[4].toUpperCase()));
-		return atraccion;
+		} catch (NumberFormatException e)  {
+			throw new AtraccionException("Uno de los parametros ingresados en la linea [" + linea +  "] no es un numero valido");
+		} catch (IllegalArgumentException e) {
+			throw new AtraccionException("El parametro " + lin[4] + " ingresado en la linea [" + linea +  "] no corresponde a un tipo de atraccion valido");
 	}
+		return A;
+		}	
 }
