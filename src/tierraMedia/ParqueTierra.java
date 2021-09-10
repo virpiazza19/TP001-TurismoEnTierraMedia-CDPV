@@ -26,10 +26,12 @@ public class ParqueTierra {
 		atracciones = la.leerAtracciones("archivosDeEntrada/atracciones.csv");
 		for (Atraccion atraccion : atracciones) {
 			parque.productos.add(atraccion);
+			System.out.println(atraccion);
 		}
 		promociones = lp.leerPromociones(atracciones, "archivosDeEntrada/promociones.csv");
 		for (Promocion promocion : promociones) {
 			parque.productos.add(promocion);
+			System.out.println(promocion);
 		}
 
 		for (Producto producto : parque.productos) {
