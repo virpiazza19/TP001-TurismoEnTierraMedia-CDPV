@@ -12,8 +12,6 @@ public class Atraccion extends Producto {
 		this.cupo = cupo;
 	}
 
-	
-	
 	public int getCupo() {
 		return cupo;
 	}
@@ -21,7 +19,6 @@ public class Atraccion extends Producto {
 		return this.getCupo() > 0;
 	}
 
-	// Exception es atrapada cuando leemos el archivo
 	protected void disminuirCupo() throws NoHayCupoException {
 		if (!hayCupo()) {
 			throw new NoHayCupoException("Se agoto el CUPO en la atraccion.");
