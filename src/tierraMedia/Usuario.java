@@ -34,20 +34,10 @@ public class Usuario {
 		return itinerario;
 	}
 
-	public void sugerirProductos(List <Producto> productos) {
-		productos.sort(new ComparadorPorTipoAtraccion(atraccionPreferida));
-		for(Producto O: productos) {
-			if(this.atraccionPreferida == O.tipoAtraccion && this.presupuesto >= O.costo && this.tiempoDisponible >= O.duracion) {
-				System.out.println(O);
-			} else {
-				while(this.presupuesto >= O.costo && this.tiempoDisponible >= O.duracion) {
-					System.out.println(O);
-				}
-			}
-		}
-		
+	public void agregarProductosAlItinerario() {
+		// FALTA
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Usuario [nombre=" + nombre + ", presupuesto=" + presupuesto + ", tiempoDisponible="
