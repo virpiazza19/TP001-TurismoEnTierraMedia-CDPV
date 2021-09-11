@@ -78,7 +78,7 @@ public class LectorPromociones {
 		if (lin.length == 7) {
 			Atraccion a3 = buscarAtraccion(atracciones, lin[5]);
 			return new PromocionAbsoluta(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3,
-					Integer.parseInt(lin[5]));
+					Integer.parseInt(lin[6]));
 		}
 		return null;
 	}
