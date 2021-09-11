@@ -21,7 +21,7 @@ public class LectorUsuario {
 			while (linea != null) {
 				try {
 					usuarios.add(crearUsuario(linea));
-				} catch (UsuarioException e) { // controla excepcion por error en parametros al crear usuario
+				} catch (UsuarioException e) {
 					System.out.println(e.getMessage());
 				}
 				linea = br.readLine();
