@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-AxB,aventura,Promocion 2x1,Moria,Bosque Negro
-=======
-AxB,aventura,Promocion2x1,Moria,Bosque Negro
->>>>>>> branch 'master' of https://github.com/virpiazza19/TP001-TurismoEnTierraMedia-CDPV.git
 AxB,paisaje,Promocion 3x2,Minas Tirith,Abismo de Helm,Erebor
 AxB,degustacion,Promocion 2x1,Lothlórien,La Comarca
 ABSOLUTA,aventura,Promo Absoluta,Mordor,Bosque Negro,30
-ABSOLUTA,paisaje,Promo Absoluta,Minas Tirith,Erebor,20
+ABSOLUTA,paisaje,Promo Absoluta,Minas Tirith,Erebor,Abismo de Helm,20
 ABSOLUTA,degustacion,Promo Absoluta,Lothlórien,La Comarca,40
 PORCENTUAL,aventura,Promo 10%dto,Moria,Mordor,10
 PORCENTUAL,paisaje,Promo 30%dto,Minas Tirith,Abismo de Helm,Erebor,30
