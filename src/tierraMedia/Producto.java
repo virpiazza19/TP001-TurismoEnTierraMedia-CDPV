@@ -40,5 +40,5 @@ public abstract class Producto {
 		this.promociones.add(p);
 	}
 	
-	public abstract boolean contiene(Producto p);
+	protected abstract boolean contiene(Producto p);
 }
