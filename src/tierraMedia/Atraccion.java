@@ -12,6 +12,8 @@ public class Atraccion extends Producto {
 		this.cupo = cupo;
 	}
 
+	
+	
 	public int getCupo() {
 		return cupo;
 	}
@@ -31,5 +33,16 @@ public class Atraccion extends Producto {
 	public String toString() {
 		return "Atraccion [preferencia=" + super.getTipoAtraccion() + ", nombre=" + super.getNombre() + ", costo=" + super.getCosto() + ", duracion="
 				+ super.getDuracion() + ", cupo=" + this.getCupo() + "]";
+	}
+
+
+
+	@Override
+	public boolean contiene(Producto p) {
+		if (p.esPromo()) {
+			return p.contiene(this);
+		}
+		
+		return this.equals(p);
 	}
 }

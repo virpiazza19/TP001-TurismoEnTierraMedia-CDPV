@@ -39,4 +39,6 @@ public abstract class Producto {
 	public void agregarPromocion(Promocion p) {
 		this.promociones.add(p);
 	}
+	
+	public abstract boolean contiene(Producto p);
 }

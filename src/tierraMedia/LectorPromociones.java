@@ -63,7 +63,7 @@ public class LectorPromociones {
 		if (lin.length == 7) {
 			Atraccion a3 = buscarAtraccion(atracciones, lin[5]);
 			return new PromocionPorcentual(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3,
-					Integer.parseInt(lin[5]));
+					Integer.parseInt(lin[6]));
 		}
 		return null;
 	}
@@ -88,11 +88,13 @@ public class LectorPromociones {
 		Atraccion a2 = buscarAtraccion(atracciones, lin[4]);
 		if (lin.length == 6) {
 			Atraccion a3 = buscarAtraccion(atracciones, lin[5]);
+	
 			return new PromocionAxB(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3);
 		}
-		if (lin.length == 7) {
-			return new PromocionAxB(TipoAtraccion.valueOf(lin[0].toUpperCase()), lin[2], a1, a2);
+		if (lin.length == 5) {
+			return new PromocionAxB(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2);
 		}
+		
 		return null;
 	}
 

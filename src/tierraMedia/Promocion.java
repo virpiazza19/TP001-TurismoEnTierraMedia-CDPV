@@ -34,7 +34,7 @@ public abstract class Promocion extends Producto {
 	protected void duracionPromocion() {
 		double duracion = 0;
 		for (Atraccion A : atraccionesEnPromocion) {
-			duracion += A.duracion;
+			duracion += A.getDuracion();
 		}
 		super.duracion = duracion;
 	}
@@ -55,6 +55,23 @@ public abstract class Promocion extends Producto {
 				+ Arrays.toString(atraccionesEnPromocion) + ", costoPromocion=" + costoPromocion + "]";
 	}
 
-	
+	@Override
+	public boolean contiene(Producto p) {
+		if (p.esPromo()) {
+			for (Atraccion atraccion : atraccionesEnPromocion) {
+				if(p.contiene(atraccion)) {
+					return true;
+				}
+			}
+		}
+		else {
+			for (Atraccion atraccion : atraccionesEnPromocion) {
+				if (atraccion.equals(p)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	
 }
