@@ -22,9 +22,9 @@ public class LectorPromociones {
 				try {
 				promociones.add(crearPromocion(linea, atracciones));
 				} catch (NumberFormatException e) {
-					System.err.println("Uno de los datos leidos en ["+ linea + "] no es un numero valido");
+					System.out.println("Uno de los datos leidos en ["+ linea + "] no es un numero valido");
 				} catch (IllegalArgumentException iae) {
-					System.err.println("El parametro ingresado en ["+ linea + "]no corresponde a un tipo de atraccion valido");
+					System.out.println("El parametro ingresado en ["+ linea + "]no corresponde a un tipo de atraccion valido");
 				}
 				linea = br.readLine();
 			}
@@ -52,7 +52,7 @@ public class LectorPromociones {
 			return crearAbsoluta(atracciones, lin);}
 		if (lin[0].toUpperCase().equals("PORCENTUAL")) {
 			return crearPorcentual(atracciones, lin);}
-		else System.err.println("La promocion ingresada en  ["+ linea + "] no es valida");
+		else System.out.println("La promocion ingresada en  ["+ linea + "] no es valida");
 		return null;
 	}
 
@@ -68,7 +68,7 @@ public class LectorPromociones {
 			return new PromocionPorcentual(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3,
 					Integer.parseInt(lin[6]));}
 		}catch(ArrayIndexOutOfBoundsException e) {
-			System.err.println ("La cantidad de parametros ingresada para una promocion PORCENTUAL no es valida");
+			System.out.println ("La cantidad de parametros ingresada para una promocion PORCENTUAL no es valida");
 		}
 		return null;
 	}
@@ -85,7 +85,7 @@ public class LectorPromociones {
 			return new PromocionAbsoluta(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3,
 					Integer.parseInt(lin[6]));}
 		}catch(ArrayIndexOutOfBoundsException e) {
-			System.err.println ("La cantidad de parametros ingresada para una promocion ABSOLUTA no es valida");
+			System.out.println ("La cantidad de parametros ingresada para una promocion ABSOLUTA no es valida");
 		}
 		return null;
 	}
@@ -104,7 +104,7 @@ public class LectorPromociones {
 			return new PromocionAxB(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2);
 		}
 		}catch(ArrayIndexOutOfBoundsException e) {
-			System.err.println ("La cantidad de parametros ingresada para una promocion AxB no es valida");
+			System.out.println ("La cantidad de parametros ingresada para una promocion AxB no es valida");
 		}
 		return null;
 	}
