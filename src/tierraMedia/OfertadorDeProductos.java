@@ -9,13 +9,12 @@ public class OfertadorDeProductos {
 	public void sugerirProductos(List<Usuario> usuarios, List<Producto> productos) {
 		for (Usuario usuario : usuarios) {
 			productos.sort(new ComparadorPorTipoAtraccion(usuario.getAtraccionPreferida()));
+			// if() si el producto tiene cupo, y no esta en itinerario 
 			for (Producto O : productos) {
-				// if() si el producto tiene cupo, y no esta en itinerario && el if
 				if (usuario.getAtraccionPreferida() == O.tipoAtraccion && usuario.getPresupuesto() >= O.costo
 						&& usuario.getTiempoDisponible() >= O.duracion) {
 					System.out.println(O);
 				} else {
-					// if() si el producto tiene cupo, y no esta en itinerario 
 					while (usuario.getPresupuesto() >= O.costo && usuario.getTiempoDisponible() >= O.duracion) {
 						System.out.println(O);
 					}
