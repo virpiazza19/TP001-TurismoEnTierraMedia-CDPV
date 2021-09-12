@@ -11,7 +11,7 @@ public class LectorPromociones {
 	private FileReader fr = null;
 	private BufferedReader br = null;
 
-	public List<Promocion> leerPromociones(List<Atraccion> atracciones, String archivo) {
+	public List<Promocion> leerPromociones(List<Atraccion> atracciones, String archivo)  {
 		List<Promocion> promociones = new ArrayList<Promocion>();
 		try {
 			fr = new FileReader(archivo);
@@ -19,7 +19,13 @@ public class LectorPromociones {
 
 			String linea = br.readLine();
 			while (linea != null) {
+				try {
 				promociones.add(crearPromocion(linea, atracciones));
+				} catch (NumberFormatException e) {
+					System.err.println("Uno de los datos leidos en ["+ linea + "] no es un numero valido");
+				} catch (IllegalArgumentException iae) {
+					System.err.println("El parametro ingresado en ["+ linea + "]no corresponde a un tipo de atraccion valido");
+				}
 				linea = br.readLine();
 			}
 		} catch (FileNotFoundException e) {
@@ -36,56 +42,59 @@ public class LectorPromociones {
 			}
 		}
 		return promociones;
-
 	}
 
 	private Promocion crearPromocion(String linea, List<Atraccion> atracciones) {
 		String[] lin = linea.split(",");
 		if (lin[0].toUpperCase().equals("AXB")) {
-			return crearAxB(atracciones, lin);
-		}
+			return crearAxB(atracciones, lin);}
 		if (lin[0].toUpperCase().equals("ABSOLUTA")) {
-			return crearAbsoluta(atracciones, lin);
-		}
+			return crearAbsoluta(atracciones, lin);}
 		if (lin[0].toUpperCase().equals("PORCENTUAL")) {
-			return crearPorcentual(atracciones, lin);
-		}
+			return crearPorcentual(atracciones, lin);}
+		else System.err.println("La promocion ingresada en  ["+ linea + "] no es valida");
 		return null;
 	}
 
 	private Promocion crearPorcentual(List<Atraccion> atracciones, String[] lin) {
+		try {
 		Atraccion a1 = buscarAtraccion(atracciones, lin[3]);
 		Atraccion a2 = buscarAtraccion(atracciones, lin[4]);
 		if (lin.length == 6) {
 			return new PromocionPorcentual(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2,
-					Integer.parseInt(lin[5]));
-		}
+					Integer.parseInt(lin[5]));}
 		if (lin.length == 7) {
 			Atraccion a3 = buscarAtraccion(atracciones, lin[5]);
 			return new PromocionPorcentual(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3,
-					Integer.parseInt(lin[6]));
+					Integer.parseInt(lin[6]));}
+		}catch(ArrayIndexOutOfBoundsException e) {
+			System.err.println ("La cantidad de parametros ingresada para una promocion PORCENTUAL no es valida");
 		}
 		return null;
 	}
 
-	private Promocion crearAbsoluta(List<Atraccion> atracciones, String[] lin) {
+	private Promocion crearAbsoluta(List<Atraccion> atracciones, String[] lin)  {
+		try {
 		Atraccion a1 = buscarAtraccion(atracciones, lin[3]);
 		Atraccion a2 = buscarAtraccion(atracciones, lin[4]);
 		if (lin.length == 6) {
 			return new PromocionAbsoluta(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2,
-					Integer.parseInt(lin[5]));
-		}
+					Integer.parseInt(lin[5]));}
 		if (lin.length == 7) {
 			Atraccion a3 = buscarAtraccion(atracciones, lin[5]);
 			return new PromocionAbsoluta(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2, a3,
-					Integer.parseInt(lin[6]));
+					Integer.parseInt(lin[6]));}
+		}catch(ArrayIndexOutOfBoundsException e) {
+			System.err.println ("La cantidad de parametros ingresada para una promocion ABSOLUTA no es valida");
 		}
 		return null;
 	}
 
 	private Promocion crearAxB(List<Atraccion> atracciones, String[] lin) {
+		try {
 		Atraccion a1 = buscarAtraccion(atracciones, lin[3]);
 		Atraccion a2 = buscarAtraccion(atracciones, lin[4]);
+
 		if (lin.length == 6) {
 			Atraccion a3 = buscarAtraccion(atracciones, lin[5]);
 	
@@ -94,7 +103,9 @@ public class LectorPromociones {
 		if (lin.length == 5) {
 			return new PromocionAxB(TipoAtraccion.valueOf(lin[1].toUpperCase()), lin[2], a1, a2);
 		}
-		
+		}catch(ArrayIndexOutOfBoundsException e) {
+			System.err.println ("La cantidad de parametros ingresada para una promocion AxB no es valida");
+		}
 		return null;
 	}
 
