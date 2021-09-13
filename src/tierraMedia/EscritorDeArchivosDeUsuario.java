@@ -12,6 +12,8 @@ public class EscritorDeArchivosDeUsuario {
 	public void crearArchivoDeSalida() throws IOException {
 		List<Producto> itinerario = new ArrayList<Producto>();
 		List<Usuario> usuarios = new LinkedList<Usuario>();
+		
+		//HABRIA QUE CONSULTARLE AL PROFE ALGUNA FORMA DE NO TENER QUE DECLARAR LAS LISTAS EN TODAS LAS CLASES
 
 		BufferedWriter bw = new BufferedWriter(new FileWriter("archivosDeSalida/nombre.out")); 
 		//NO SE COMO HACER PARA QUE EL ARCHIVO TENGA EL NOMBRE DEL USUARIO
