@@ -27,7 +27,7 @@ public class EscritorDeArchivosDeUsuario {
 
 			double duracionTotal = 0;
 			int costoTotal = 0;
-			for (Producto P : itinerario) { // NO ESCRIBO EL FOR DEL USUARIO, PORQUE CREO QUE USUARIO LLAMA AL MÉTODO
+			for (Producto P : itinerario) { 
 				if (P.esPromo()) {
 					bw.write(P.nombre + ", atracciones incluidas: " + P.atracciones);
 					bw.newLine();
