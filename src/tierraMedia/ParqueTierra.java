@@ -13,14 +13,36 @@ public class ParqueTierra {
 	public static void main(String[] args) {
 
 		ParqueTierra parque = new ParqueTierra();
-		List<Atraccion> atracciones;
-		List<Promocion> promociones;
+		OfertadorDeProductos ofertador = new OfertadorDeProductos();
+
+		parque.usuarios = parque.generarUsuarios("archivosDeEntrada/usuarios.csv");
+		parque.productos = parque.generarProductos("archivosDeEntrada/atracciones.csv",
+				"archivosDeEntrada/promociones.csv");
+
+		ofertador.sugerirProductos(parque.usuarios, parque.productos);
+
+	}
+
+	private List<Usuario> generarUsuarios(String archivo) {
 		LectorUsuario lu = new LectorUsuario();
-		parque.usuarios = lu.leerUsuarios("archivosDeEntrada/usuarios.csv");
+		return lu.leerUsuarios(archivo);
+	}
+
+	private List<Producto> generarProductos(String atracciones, String promociones) {
 		LectorAtracciones la = new LectorAtracciones();
-		atracciones = la.leerAtracciones("archivosDeEntrada/atracciones.csv");
 		LectorPromociones lp = new LectorPromociones();
-		promociones = lp.leerPromociones(atracciones, "archivosDeEntrada/promociones.csv");
-		
+		List<Producto> productos = new ArrayList<Producto>();
+		List<Atraccion> a = la.leerAtracciones(atracciones);
+		List<Promocion> p = lp.leerPromociones(a, promociones);
+
+		for (Promocion promocion : p) {
+			productos.add(promocion);
+		}
+
+		for (Atraccion atraccion : a) {
+			productos.add(atraccion);
+		}
+
+		return productos;
 	}
 }

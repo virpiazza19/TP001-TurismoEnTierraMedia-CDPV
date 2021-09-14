@@ -9,21 +9,35 @@ public class OfertadorDeProductos {
 	public void sugerirProductos(List<Usuario> usuarios, List<Producto> productos) {
 		for (Usuario usuario : usuarios) {
 			productos.sort(new ComparadorPorTipoAtraccion(usuario.getAtraccionPreferida()));
-			// if() si el producto tiene cupo, y no esta en itinerario 
+			System.out.println("----------------------------------------");
+			System.out.println(usuario.getNombre() + "     " + usuario.getAtraccionPreferida());
 			for (Producto O : productos) {
-				if (usuario.getAtraccionPreferida() == O.tipoAtraccion && usuario.getPresupuesto() >= O.costo
-						&& usuario.getTiempoDisponible() >= O.duracion) {
-					System.out.println(O);
-				} else {
-					while (usuario.getPresupuesto() >= O.costo && usuario.getTiempoDisponible() >= O.duracion) {
-						System.out.println(O);
-					}
+				System.out.println(O);
+				if (this.decisionUsuario().toUpperCase().equals("SI")) {
+					System.out.println("añade producto");
 				}
 			}
 		}
 
 	}
 
+	
+	private String decisionUsuario() {
+		Scanner sc = new Scanner(System.in);
+		String opcion = "";
+		System.out.println("\n¿Desea añadir la sugerencia a su ITINERARIO?");
+		System.out.print("Ingrese SI o No: ");
+		opcion = sc.next();
+		System.out.println();
+		while (!opcion.toUpperCase().equals("SI") && !opcion.toUpperCase().equals("NO")) {
+			System.out.println("Ingrese SI o No: ");
+			opcion = sc.next();
+			System.out.println();
+		}
+		return opcion;
+	}
+	
+	
 	public void aceptarOferta(List<Usuario> usuarios, List<Producto> productos) { 
 		List<Producto> itinerario = new ArrayList<Producto>();
 

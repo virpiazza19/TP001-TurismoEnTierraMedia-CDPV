@@ -34,8 +34,10 @@ public class Usuario {
 		return itinerario;
 	}
 
-	public void agregarProductosAlItinerario() {
-		// FALTA
+	public void agregarProductosAlItinerario(Producto producto) {
+		itinerario.add(producto);
+        this.presupuesto -= producto.getCosto();
+        this.tiempoDisponible -= producto.getDuracion();
 	}
 	
 	@Override

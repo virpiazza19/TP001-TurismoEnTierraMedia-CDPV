@@ -26,13 +26,12 @@ public class Atraccion extends Producto {
 		this.cupo--;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Atraccion [preferencia=" + super.getTipoAtraccion() + ", nombre=" + super.getNombre() + ", costo=" + super.getCosto() + ", duracion="
-				+ super.getDuracion() + ", cupo=" + this.getCupo() + "]";
+		return "ATRACCION \n Nombre: " + super.getNombre() + " | Costo: " + super.getCosto() +" Monedas | Duración: " + super.getDuracion() + " horas | Tipo: " + super.getTipoAtraccion(); 
 	}
-
-
+	
 
 	@Override
 	public boolean contiene(Producto p) {
