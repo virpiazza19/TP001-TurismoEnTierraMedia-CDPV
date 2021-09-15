@@ -11,9 +11,9 @@ public class EscritorDeArchivosDeUsuario {
 
 	public void crearArchivoDeSalida(List<Usuario> usuarios, String archivoSalida) throws IOException {
 		BufferedWriter bw = new BufferedWriter(new FileWriter(archivoSalida));
-		// la ruta la ingresamos al metodo invocar al metodo
-		// -> EscritorDeArchivosDeUsuario.crearArchivoDeSalida(usuarios,
-		// "archivosDeSalida/" + u.getNombre() + ".csv");
+		// la ruta la ingresamos al invocar al metodo
+		// -> EscritorDeArchivosDeUsuario.crearArchivoDeSalida(usuarios,"archivosDeSalida/" + u.getNombre() + ".csv");
+
 
 		for (Usuario U : usuarios) {
 			bw.write("Nombre del usuario: " + U.getNombre() + " \nPresupuesto total: " + U.getPresupuesto()
