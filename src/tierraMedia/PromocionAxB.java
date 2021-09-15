@@ -10,7 +10,6 @@ public class PromocionAxB extends Promocion {
 		super.tipoAtraccion = tipo;
 		super.nombre = nombre;
 		super.atraccionesEnPromocion = new Atraccion[] { a1, a2, atraccionBonificada };
-		System.out.println(Arrays.deepToString(atraccionesEnPromocion));
 		super.duracionPromocion();
 		this.atraccionBonificada = atraccionBonificada;
 		this.costoPromocion();

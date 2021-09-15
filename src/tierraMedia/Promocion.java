@@ -1,7 +1,5 @@
 package tierraMedia;
 
-import java.util.Arrays;
-
 public abstract class Promocion extends Producto {
 	TipoAtraccion tipoPreferido;
 	TipoPromocion tipoPromo;
@@ -80,4 +78,21 @@ public abstract class Promocion extends Producto {
 		return false;
 	}
 
+	
+	@Override
+	protected boolean hayCupo() {
+		for (Atraccion atraccion : atraccionesEnPromocion) {
+			if (!atraccion.hayCupo()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	@Override
+	protected void disminuirCupo() throws NoHayCupoException {
+		for (Atraccion atraccion : atraccionesEnPromocion) {
+			atraccion.disminuirCupo();
+		}
+	}
 }

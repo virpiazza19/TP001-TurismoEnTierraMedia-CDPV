@@ -15,13 +15,16 @@ public class Atraccion extends Producto {
 	public int getCupo() {
 		return cupo;
 	}
-	private boolean hayCupo() {
+	
+	@Override
+	protected boolean hayCupo() {
 		return this.getCupo() > 0;
 	}
+	
 
 	protected void disminuirCupo() throws NoHayCupoException {
 		if (!hayCupo()) {
-			throw new NoHayCupoException("Se agoto el CUPO en la atraccion.");
+			throw new NoHayCupoException("Se agoto el CUPO en la atraccion: " + this.getNombre());
 		}
 		this.cupo--;
 	}

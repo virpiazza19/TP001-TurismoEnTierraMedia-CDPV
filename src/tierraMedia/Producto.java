@@ -41,4 +41,8 @@ public abstract class Producto {
 	}
 	
 	protected abstract boolean contiene(Producto p);
+	
+	protected abstract boolean hayCupo();
+
+	protected abstract void disminuirCupo() throws NoHayCupoException;
 }

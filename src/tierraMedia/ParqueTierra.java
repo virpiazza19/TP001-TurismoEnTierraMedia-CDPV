@@ -10,7 +10,7 @@ public class ParqueTierra {
 	private List<Usuario> usuarios = new LinkedList<Usuario>();
 	private List<Producto> productos = new ArrayList<Producto>();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NoHayCupoException {
 
 		ParqueTierra parque = new ParqueTierra();
 		OfertadorDeProductos ofertador = new OfertadorDeProductos();
@@ -19,6 +19,12 @@ public class ParqueTierra {
 		parque.productos = parque.generarProductos("archivosDeEntrada/atracciones.csv",
 				"archivosDeEntrada/promociones.csv");
 
+		// PRUEBAS
+		
+		//parque.usuarios = parque.generarUsuarios("archivosDeEntrada/pruebaUsuarios.csv");
+		//parque.productos = parque.generarProductos("archivosDeEntrada/pruebaAtracciones.csv",
+		//		    	"archivosDeEntrada/pruebaPromociones.csv");
+		
 		ofertador.sugerirProductos(parque.usuarios, parque.productos);
 
 	}
