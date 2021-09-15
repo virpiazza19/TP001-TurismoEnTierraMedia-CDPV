@@ -1,6 +1,7 @@
 package tierraMedia;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,12 +12,34 @@ public class OfertadorDeProductos {
 			productos.sort(new ComparadorPorTipoAtraccion(usuario.getAtraccionPreferida()));
 			System.out.println("----------------------------------------");
 			System.out.println(usuario.getNombre() + "     " + usuario.getAtraccionPreferida());
-			for (Producto O : productos) {
-				System.out.println(O);
+			for (Producto producto : productos) {
+				ArrayList<Producto> itinerario = (ArrayList<Producto>) usuario.getItinerario();
+				boolean contiene = false;
+				Iterator<Producto> iterador = itinerario.iterator();
+				
+				while (!contiene && iterador.hasNext()) {
+					contiene = iterador.next().contiene(producto);
+					
+				}
+				
+				// verificar recursos del usuario
+				if (!this.tieneRecursos(usuario)) {
+					break;
+				}
+				
+				
+				
+				System.out.println(producto);
 				if (this.decisionUsuario().toUpperCase().equals("SI")) {
 					System.out.println("añade producto");
+					usuario.agregarProductosAlItinerario(producto);
+				}
+				else {
+					break;
 				}
 			}
+			System.out.println(usuario.getItinerario());
+			break;
 		}
 
 	}
@@ -38,34 +61,14 @@ public class OfertadorDeProductos {
 	}
 	
 	
-	public void aceptarOferta(List<Usuario> usuarios, List<Producto> productos) { 
-		List<Producto> itinerario = new ArrayList<Producto>();
-
-		//SCANNER
-		String opcion = "";
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Ingrese SI o No: ");
-		opcion = sc.next();
-		System.out.println();
-		while (!opcion.equals("SI") && !opcion.equals("NO")) {
-			System.out.println("Ingrese SI o No: ");
-			opcion = sc.next();
-			System.out.println();
+	/***
+	 * Devuelve true si tiene presupuesto y tiempo disponible
+	 */
+	private boolean tieneRecursos(Usuario u) {
+		if (u.getPresupuesto() <= 0 || u.getTiempoDisponible() <= 0) {
+			return false;
 		}
-		for (Usuario U: usuarios) {
-		for (Producto O:productos) { // para cada oferta de la lista de ofertas
-				if(O.esPromo()) { // si la oferta es una promo
-					O.atracciones  // tiene que chequear que ninguna de las atracciones que estan adentro este adentro de la lista de Itinerario
-				} else if(!O.esPromo()) { //si no es promo 
-					// tiene que chequear que la atraccion se haya aceptado dentro de una promo
-				}
-			U.sugerirProductos(productos); //Una vez que cumple con lo anterior, sugiere la oferta correcta
-			if(sc.equals("SI")) {
-			itinerario.add(O); 
-			}
-		}
-		System.out.println(itinerario);
-	}
+		return true;
 	}
 
 }

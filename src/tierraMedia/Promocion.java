@@ -7,7 +7,6 @@ public abstract class Promocion extends Producto {
 	TipoPromocion tipoPromo;
 	int costoPromocion;
 	double duracionPromocion;
-
 	protected Atraccion[] atraccionesEnPromocion;
 
 	public Promocion() {
@@ -71,19 +70,13 @@ public abstract class Promocion extends Producto {
 
 	@Override
 	public boolean contiene(Producto p) {
-		if (p.esPromo()) {
-			for (Atraccion atraccion : atraccionesEnPromocion) {
-				if (p.contiene(atraccion)) {
-					return true;
-				}
-			}
-		} else {
-			for (Atraccion atraccion : atraccionesEnPromocion) {
-				if (atraccion.equals(p)) {
-					return true;
-				}
+
+		for (Atraccion atraccion : atraccionesEnPromocion) {
+			if (p.contiene(atraccion)) {
+				return true;
 			}
 		}
+
 		return false;
 	}
 

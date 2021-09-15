@@ -9,16 +9,17 @@ import java.util.List;
 
 public class EscritorDeArchivosDeUsuario {
 
-	public void crearArchivoDeSalida() throws IOException {
-		List<Producto> itinerario = new ArrayList<Producto>();
-		List<Usuario> usuarios = new LinkedList<Usuario>();
+	// pasar lista usuarios
+	public void crearArchivoDeSalida(List<Usuario> usuario) throws IOException {
+		
+		//List<Usuario> usuarios = new LinkedList<Usuario>();
 		
 		//HABRIA QUE CONSULTARLE AL PROFE ALGUNA FORMA DE NO TENER QUE DECLARAR LAS LISTAS EN TODAS LAS CLASES
 
 		BufferedWriter bw = new BufferedWriter(new FileWriter("archivosDeSalida/nombre.out")); 
 		//NO SE COMO HACER PARA QUE EL ARCHIVO TENGA EL NOMBRE DEL USUARIO
 
-		for (Usuario U : usuarios) {
+		for (Usuario U : usuario) {
 			bw.write("Nombre del usuario: " + U.getNombre() + ", Presupuesto total: " + U.getPresupuesto()
 					+ ", Tiempo disponible: " + U.getTiempoDisponible());
 			bw.newLine();
@@ -27,7 +28,7 @@ public class EscritorDeArchivosDeUsuario {
 
 			double duracionTotal = 0;
 			int costoTotal = 0;
-			for (Producto P : itinerario) { 
+			for (Producto P : U.getItinerario()) { 
 				if (P.esPromo()) {
 					bw.write(P.nombre + ", atracciones incluidas: " + P.atracciones);
 					bw.newLine();
