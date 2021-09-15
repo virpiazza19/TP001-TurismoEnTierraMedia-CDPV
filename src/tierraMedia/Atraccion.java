@@ -15,24 +15,26 @@ public class Atraccion extends Producto {
 	public int getCupo() {
 		return cupo;
 	}
-	private boolean hayCupo() {
+	
+	@Override
+	protected boolean hayCupo() {
 		return this.getCupo() > 0;
 	}
+	
 
 	protected void disminuirCupo() throws NoHayCupoException {
 		if (!hayCupo()) {
-			throw new NoHayCupoException("Se agoto el CUPO en la atraccion.");
+			throw new NoHayCupoException("Se agoto el CUPO en la atraccion: " + this.getNombre());
 		}
 		this.cupo--;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Atraccion [preferencia=" + super.getTipoAtraccion() + ", nombre=" + super.getNombre() + ", costo=" + super.getCosto() + ", duracion="
-				+ super.getDuracion() + ", cupo=" + this.getCupo() + "]";
+		return "ATRACCION \n Nombre: " + super.getNombre() + " | Costo: " + super.getCosto() +" Monedas | Duración: " + super.getDuracion() + " horas | Tipo: " + super.getTipoAtraccion(); 
 	}
-
-
+	
 
 	@Override
 	public boolean contiene(Producto p) {

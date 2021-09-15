@@ -1,15 +1,12 @@
 package tierraMedia;
 
-import java.util.Arrays;
-
 public abstract class Promocion extends Producto {
-	TipoAtraccion tipoPreferido; 
+	TipoAtraccion tipoPreferido;
 	TipoPromocion tipoPromo;
-	int costoPromocion; 
-	double duracionPromocion; 
-
+	int costoPromocion;
+	double duracionPromocion;
 	protected Atraccion[] atraccionesEnPromocion;
-	
+
 	public Promocion() {
 		super();
 	}
@@ -21,12 +18,15 @@ public abstract class Promocion extends Producto {
 	public TipoPromocion getTipoPromo() {
 		return tipoPromo;
 	}
+
 	public int getCostoPromocion() {
 		return costoPromocion;
 	}
+
 	public double getDuracionPromocion() {
 		return duracionPromocion;
 	}
+
 	public Promocion(String nombre) {
 		super.nombre = nombre;
 	}
@@ -44,6 +44,7 @@ public abstract class Promocion extends Producto {
 	protected Atraccion[] getAtraccionesEnPromocion() {
 		return this.atraccionesEnPromocion;
 	}
+
 	@Override
 	protected boolean esPromo() {
 		return true;
@@ -51,27 +52,47 @@ public abstract class Promocion extends Producto {
 
 	@Override
 	public String toString() {
-		return "Promocion [Nombre=" + nombre + ", atraccionesEnPromocion="
-				+ Arrays.toString(atraccionesEnPromocion) + ", costoPromocion=" + costoPromocion + "]";
+		return "PROMOCION \n Nombre: " + super.getNombre() + " | Atracciones Incluidas: " + this.atraccionesIncluidas()
+				+ " | Costo: " + super.getCosto() + " monedas | Duración: " + super.getDuracion() + " horas | Tipo: "
+				+ super.getTipoAtraccion();
+	}
+
+	private String atraccionesIncluidas() {
+		String cadena = "";
+		for (int i = 0; i < atraccionesEnPromocion.length - 1; i++) {
+			cadena += atraccionesEnPromocion[i].getNombre() + ", ";
+		}
+
+		return cadena + atraccionesEnPromocion[atraccionesEnPromocion.length - 1].getNombre();
 	}
 
 	@Override
 	public boolean contiene(Producto p) {
-		if (p.esPromo()) {
-			for (Atraccion atraccion : atraccionesEnPromocion) {
-				if(p.contiene(atraccion)) {
-					return true;
-				}
+
+		for (Atraccion atraccion : atraccionesEnPromocion) {
+			if (p.contiene(atraccion)) {
+				return true;
 			}
 		}
-		else {
-			for (Atraccion atraccion : atraccionesEnPromocion) {
-				if (atraccion.equals(p)) {
-					return true;
-				}
-			}
-		}
+
 		return false;
 	}
+
 	
+	@Override
+	protected boolean hayCupo() {
+		for (Atraccion atraccion : atraccionesEnPromocion) {
+			if (!atraccion.hayCupo()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	@Override
+	protected void disminuirCupo() throws NoHayCupoException {
+		for (Atraccion atraccion : atraccionesEnPromocion) {
+			atraccion.disminuirCupo();
+		}
+	}
 }

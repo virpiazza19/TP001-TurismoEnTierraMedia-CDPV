@@ -14,7 +14,6 @@ public class EscritorDeArchivosDeUsuario {
 		// la ruta la ingresamos al invocar al metodo
 		// -> EscritorDeArchivosDeUsuario.crearArchivoDeSalida(usuarios,"archivosDeSalida/" + u.getNombre() + ".csv");
 
-
 		for (Usuario U : usuarios) {
 			bw.write("Nombre del usuario: " + U.getNombre() + " \nPresupuesto total: " + U.getPresupuesto()
 					+ " monedas de oro \nTiempo disponible: " + U.getTiempoDisponible() + " horas\n");
@@ -23,6 +22,7 @@ public class EscritorDeArchivosDeUsuario {
 
 			double duracionTotal = 0;
 			int costoTotal = 0;
+
 			for (Producto P : U.getItinerario()) {
 				if (P.esPromo()) {
 					bw.write(P.nombre + ". Atracciones incluidas: " + P.atracciones);
