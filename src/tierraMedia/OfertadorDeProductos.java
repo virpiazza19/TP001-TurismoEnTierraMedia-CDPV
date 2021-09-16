@@ -1,5 +1,6 @@
 package tierraMedia;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -16,8 +17,6 @@ public class OfertadorDeProductos {
 
 			for (Producto producto : productos) {
 
-				// Recupera itinerario para verificar si el producto a ofrecer ya se encuentra
-				// guardado
 				List<Producto> itinerario = usuario.getProductosEnItinerario();
 				boolean contiene = false;
 				Iterator<Producto> iterador = itinerario.iterator();
@@ -52,11 +51,15 @@ public class OfertadorDeProductos {
 			System.out.println(usuario.itinerario);
 			System.out.println("\t\t\t\t COSTO TOTAL: " + usuario.itinerario.costoTotal() + " monedas.");
 			System.out.println("\t\t\t\t DURACION TOTAL: " + usuario.itinerario.duracionTotal() + " horas.");
+			try {
+				EscritorDeArchivosDeUsuario.crearArchivoDeSalida(usuario,"archivosDeSalida/" + usuario.getNombre() + ".csv");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-
 		System.out.println("\n\n\n\t\t\t\t FIN PROGRAMA");
 	}
-
+ 
 	
 	/***
 	 * Devuelve la opcion elegida por el usuario

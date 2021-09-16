@@ -9,35 +9,21 @@ import java.util.List;
 
 public class EscritorDeArchivosDeUsuario {
 
-	public void crearArchivoDeSalida(List<Usuario> usuarios, String archivoSalida) throws IOException {
+	public static void crearArchivoDeSalida(Usuario U, String archivoSalida) throws IOException {
 		BufferedWriter bw = new BufferedWriter(new FileWriter(archivoSalida));
-		// la ruta la ingresamos al invocar al metodo
-		// -> EscritorDeArchivosDeUsuario.crearArchivoDeSalida(usuarios,"archivosDeSalida/" + u.getNombre() + ".csv");
 
-		for (Usuario U : usuarios) {
-			bw.write("Nombre del usuario: " + U.getNombre() + " \nPresupuesto total: " + U.getPresupuesto()
-					+ " monedas de oro \nTiempo disponible: " + U.getTiempoDisponible() + " horas\n");
-			bw.write("Itinerario: ");
-			bw.newLine();
-
-			double duracionTotal = 0;
-			int costoTotal = 0;
-
-			for (Producto P : U.getItinerario()) {
-				if (P.esPromo()) {
-					bw.write(P.nombre + ". Atracciones incluidas: " + P.atracciones);
-					bw.newLine();
-				}
-				if (!P.esPromo()) {
-					bw.write(P.nombre);
-					bw.newLine();
-				}
-				duracionTotal += P.duracion;
-				costoTotal += P.costo;
-			}
-			bw.write("Costo total: " + duracionTotal + " monedas de oro\n");
-			bw.write("Tiempo necesario para realizar el itinerario completo: " + costoTotal + " horas\n");
-		}
+		bw.write("\n=====================================================\n");
+		bw.write("RESUMEN DE TU CUENTA \n");
+		bw.write("Usuario: " + U.getNombre() + "\nPresupuesto actual: " + U.getPresupuesto() + 
+				" monedas de oro \nTiempo disponible actual: "
+				+ U.getTiempoDisponible() + " horas");
+		bw.write("\n---------------------------------------------------------\n");
+		bw.write("El itinerario comprado incluye: \n" + (U.itinerario));
+		bw.newLine();
+		bw.write("COSTO TOTAL:  " + U.itinerario.costoTotal() + " monedas de oro\n");
+		bw.write("DURACION TOTAL: " + U.itinerario.duracionTotal() + " horas\n");
+		bw.write("\n---- GRACIAS " + U.getNombre().toUpperCase() + " POR TU VISITA ----\n");
+		bw.write("\n=====================================================\n");
 		bw.close();
 	}
 }
