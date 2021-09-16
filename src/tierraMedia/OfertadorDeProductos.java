@@ -24,10 +24,8 @@ public class OfertadorDeProductos {
 					contiene = iterador.next().contiene(producto);
 				}
 
-				// Verifica cupo de atraccion
 				boolean hayCupo = producto.hayCupo();
 
-				// Verifica los recursos del usuario
 				boolean puedeComprar = puedeComprar(usuario, producto);
 
 				if (!contiene && hayCupo && puedeComprar) {
@@ -47,23 +45,20 @@ public class OfertadorDeProductos {
 			}
 			System.out.println(
 					"\n--------------------------------------------------------------------------------------------------\n");
-		    System.out.println("\t\t\t\t RESUMEN DE ITINERARIO\n");
+			System.out.println("\t\t\t\t RESUMEN DE ITINERARIO\n");
 			System.out.println(usuario.itinerario);
 			System.out.println("\t\t\t\t COSTO TOTAL: " + usuario.itinerario.costoTotal() + " monedas.");
 			System.out.println("\t\t\t\t DURACION TOTAL: " + usuario.itinerario.duracionTotal() + " horas.");
 			try {
-				EscritorDeArchivosDeUsuario.crearArchivoDeSalida(usuario,"archivosDeSalida/" + usuario.getNombre() + ".csv");
+				EscritorDeArchivosDeUsuario.crearArchivoDeSalida(usuario,
+						"archivosDeSalida/" + usuario.getNombre() + ".csv");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
 		System.out.println("\n\n\n\t\t\t\t FIN PROGRAMA");
 	}
- 
-	
-	/***
-	 * Devuelve la opcion elegida por el usuario
-	 */
+
 	private String decisionUsuario() {
 		Scanner sc = new Scanner(System.in);
 		String opcion = "";
@@ -78,15 +73,11 @@ public class OfertadorDeProductos {
 		}
 		return opcion;
 	}
-	
-	/***
-	 * Devuelve true si tiene presupuesto y tiempo disponible
-	 */
+
 	private boolean puedeComprar(Usuario u, Producto p) {
 		if (u.getPresupuesto() < p.getCosto() || u.getTiempoDisponible() < p.getDuracion()) {
 			return false;
 		}
 		return true;
 	}
-
 }

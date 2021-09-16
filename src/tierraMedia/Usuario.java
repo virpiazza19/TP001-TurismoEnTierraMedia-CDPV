@@ -9,7 +9,6 @@ public class Usuario {
 	private int presupuesto;
 	private double tiempoDisponible;
 	private TipoAtraccion atraccionPreferida;
-	// private List<Producto> itinerario = new ArrayList<Producto>();
 	protected Itinerario itinerario = new Itinerario();
 
 	public Usuario(String nombre, int presupuesto, double tiempoDisponible, TipoAtraccion atraccionPreferida) {

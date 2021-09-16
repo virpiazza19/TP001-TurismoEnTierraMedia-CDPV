@@ -30,8 +30,7 @@ public abstract class Producto {
 	protected boolean esPromo() {
 		return false;
 	}
-	
-	// Metodos que usariamos en el lector
+
 	public void agregarAtraccion(Atraccion a) {
 		this.atracciones.add(a);
 	}

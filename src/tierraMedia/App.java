@@ -6,5 +6,4 @@ public class App {
 				"archivosDeEntrada/atracciones.csv","archivosDeEntrada/promociones.csv");
 		parque.ofrecerServicios (parque.usuarios, parque.productos);
 	}
-
 }
