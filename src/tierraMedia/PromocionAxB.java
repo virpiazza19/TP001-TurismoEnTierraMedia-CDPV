@@ -1,7 +1,5 @@
 package tierraMedia;
 
-import java.util.Arrays;
-
 public class PromocionAxB extends Promocion {
 
 	private Atraccion atraccionBonificada;

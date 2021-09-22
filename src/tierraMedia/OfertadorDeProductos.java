@@ -59,6 +59,7 @@ public class OfertadorDeProductos {
 		System.out.println("\n\n\n\t\t\t\t FIN PROGRAMA");
 	}
 
+	@SuppressWarnings("resource")
 	private String decisionUsuario() {
 		Scanner sc = new Scanner(System.in);
 		String opcion = "";
